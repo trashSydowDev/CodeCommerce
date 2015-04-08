@@ -17,7 +17,7 @@ As descrições do projeto, etapa por etapa, vc encontra no arquivo projeto.txt
 
 **Etapas**
 
->11º Etapa. *Instalando e versionando*
+>1º Etapa. *Instalando e versionando*
 
 **Uso**
 
