@@ -1,0 +1,6 @@
+***************************************************************************************
+*************************1º Etapa. Instalando e versionando
+***************************************************************************************
+
+Nessa primeira fase do projeto, você deverá instalar o Laravel, mudar o namespace padrão da aplicação para CodeCommerce e versionar todos os arquivos criados no Git.
+Não esqueça de testar a aplicação rodando o comando: php artisan serve

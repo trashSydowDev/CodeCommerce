@@ -1,23 +1,38 @@
-## Laravel PHP Framework
+CodeCommerce
+=======================
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+:book: Projeto: CodeCommerce - Portal Code Education - Trilhando caminho com frameworks | Módulo Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+Estudo sobre o Framework Laravel 5
+--------------------------------
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+Os arquivos aqui adicionados fazem parte do curso do <a href="http://sites.code.education/trilhando-frameworks/" title="Portal Code Education" target="_blank" >Portal Code-Education</a> - Trilhando caminho com frameworks | Módulo Laravel.
 
-## Official Documentation
+Módulo Laravel 5
+--------------
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+**Projeto: CodeCommerce**
 
-## Contributing
+As descrições do projeto, etapa por etapa, vc encontra no arquivo projeto.txt
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+**Etapas**
 
-### License
+>11º Etapa. *Instalando e versionando*
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+**Uso**
+
+> - git clone https://github.com/candidosouza/CodeCommerce.git
+
+> - cd CodeCommerce
+
+> - composer install
+
+> - php artisan serve
+
+**Sobre o projeto**
+
+*Este projeto foi desenvolvido para didática, não serve como um projeto real.*
+
+*O projeto foi construido como avaliação do curso Trilhando caminho com frameworks | Módulo Laravel - Portal Code Education.*
+
+Copyright (c) 2014 <a href="http://candidosouza.com.br/" title="Candido Souza" target="_blank" >Candido Souza</a>
