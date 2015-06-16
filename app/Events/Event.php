@@ -1,7 +1,8 @@
-<?php namespace CodeCommerce\Events;
+<?php
 
-abstract class Event {
+namespace CodeCommerce\Events;
 
-	//
-
+abstract class Event
+{
+    //
 }
