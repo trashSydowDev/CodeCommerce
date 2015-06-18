@@ -1,4 +1,6 @@
-var elixir = require('laravel-elixir');
+var elixir = require('laravel-elixir'),
+    stylus = require('laravel-elixir-stylus-bundle');
+
 
 /*
  |--------------------------------------------------------------------------
@@ -12,5 +14,5 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.less('app.less');
+    mix.stylusBundle();
 });
