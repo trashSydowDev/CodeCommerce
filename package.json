@@ -1,9 +1,12 @@
 {
-      "private": true,
-      "devDependencies": {
-            "gulp": "^3.8.8",
-            "jeet": "*",
-            "laravel-elixir": "^2.0.0",
-            "laravel-elixir-stylus-bundle": "*"
-      }
+  "private": true,
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp gulp-connect-php": "*",
+    "gulp-connect-php": "0.0.5",
+    "jeet": "*",
+    "laravel-elixir": "^2.0.0",
+    "laravel-elixir-stylus": "^0.2.12",
+    "laravel-elixir-stylus-bundle": "*"
+  }
 }

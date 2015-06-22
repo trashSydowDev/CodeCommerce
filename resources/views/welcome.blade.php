@@ -4,55 +4,22 @@
         <title>Laravel</title>
 
         <link href='//fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{{ elixir("css/main.css") }}">
 
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                color: #000;
-                display: table;
-                font-weight: 400;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-                margin-bottom: 40px;
-            }
-
-            .quote {
-                font-size: 24px;
-            }
-
-            ul {
-                list-style-type: none;
-            }
-        </style>
     </head>
     <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5</div>
-                <ul>
+    <main>
 
-                </ul>
+        <section class="container">
+            <div class="content">
+                <article>
+                    <a href="/admin/categories" title="Categorias" >Categorias</a> |
+                    <a href="/admin/products" title="Produtos" >Produtos</a>
+
+                    @yield('content')
+                </article>
             </div>
-        </div>
+        </section>
+    </main>
     </body>
 </html>

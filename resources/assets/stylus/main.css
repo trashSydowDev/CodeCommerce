@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.main {
+  width: 100%;
+}
+.container {
+  width: 100%;
+}
+.content {
+  *zoom: 1;
+  width: auto;
+  max-width: 1200px;
+  float: none;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0;
+  clear: both;
+}
+.content:before,
+.content:after {
+  content: '';
+  display: table;
+}
+.content:after {
+  clear: both;
+}
+section {
+  *zoom: 1;
+  float: left;
+  clear: none;
+  text-align: inherit;
+  width: 100%;
+  margin-left: 0%;
+  margin-right: 3%;
+}
+section:before,
+section:after {
+  content: '';
+  display: table;
+}
+section:after {
+  clear: both;
+}
+section:last-child {
+  margin-right: 0%;
+}
+article {
+  *zoom: 1;
+  float: left;
+  clear: none;
+  text-align: inherit;
+  width: 100%;
+  margin-left: 0%;
+  margin-right: 3%;
+}
+article:before,
+article:after {
+  content: '';
+  display: table;
+}
+article:after {
+  clear: both;
+}
+article:last-child {
+  margin-right: 0%;
+}
+article table {
+  width: 100%;
+}
+article table thead {
+  text-align: center;
+  font-family: 'Lato';
+  font-weight: 300;
+  font-size: 2em;
+}
+article table tbody {
+  text-align: center;
+  font-family: 'Lato';
+  font-weight: 300;
+  font-size: 1.7em;
+  color: #337ab7;
+}
+article a {
+  font-family: 'Lato';
+  font-weight: 300;
+  font-size: 2em;
+  text-decoration: none;
+  color: #337ab7;
+}
+article a:hover {
+  text-decoration: underline;
+}
+header {
+  text-align: center;
+  font-family: 'Lato';
+  font-weight: 300;
+  font-size: 2.5em;
+  color: #337ab7;
+}
