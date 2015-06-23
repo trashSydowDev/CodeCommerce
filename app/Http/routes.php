@@ -22,33 +22,37 @@ Route::group(['prefix' => 'admin'], function(){
     Route::pattern('id', '[0-9]+');
 
     // CATEGORIAS
-    get('categories', ['as' => 'categories', 'uses' => 'AdminCategoriesController@index']);
+    Route::group(['prefix' => 'categories'], function(){
 
-    get('categories/{id}', ['as'=>'categories_show','uses'=>'AdminCategoriesController@show']);
+        get('/', ['as' => 'categories', 'uses' => 'AdminCategoriesController@index']);
 
-    get('categories/{id}/delete',['as'=>'categories_delete','uses'=>'AdminCategoriesController@deleteAction']);
+        get('/{id}', ['as'=>'categories_show','uses'=>'AdminCategoriesController@show']);
 
-    get('categories/{id}/edit',['as'=>'categories_edit','uses'=>'AdminCategoriesController@editAction']);
+        get('/{id}/delete',['as'=>'categories_delete','uses'=>'AdminCategoriesController@deleteAction']);
 
-    // CATEGORIAS API
-    get('categories/api/{category}', ['as' => 'categories_api_show',  function(Category $category) {
-        return $category;
-    }]);
+        get('/{id}/edit',['as'=>'categories_edit','uses'=>'AdminCategoriesController@editAction']);
 
-
+        // CATEGORIAS API
+        get('/api/{category}', ['as' => 'categories_api_show',  function(Category $category) {
+            return $category;
+        }]);
+    });
 
     // PRODUTOS
-    get('products', ['as' => 'products', 'uses' => 'AdminProductsController@index']);
+    Route::group(['prefix' => 'products'], function(){
 
-    get('products/{id}', ['as'=>'products_show','uses'=>'AdminProductsController@showAction']);
+        get('/', ['as' => 'products', 'uses' => 'AdminProductsController@index']);
 
-    get('products/{id}/delete',['as'=>'products_delete','uses'=>'AdminProductsController@deleteAction']);
+        get('/{id}', ['as'=>'products_show','uses'=>'AdminProductsController@showAction']);
 
-    get('products/{id}/edit',['as'=>'products_edit','uses'=>'AdminProductsController@editAction']);
+        get('/{id}/delete',['as'=>'products_delete','uses'=>'AdminProductsController@deleteAction']);
 
-    // PRODUTOS API
-    get('products/api/{products}', ['as' => 'products_api_show',  function(Product $products) {
-        return $products;
-    }]);
+        get('/{id}/edit',['as'=>'products_edit','uses'=>'AdminProductsController@editAction']);
+
+        // PRODUTOS API
+        get('/api/{products}', ['as' => 'products_api_show',  function(Product $products) {
+            return $products;
+        }]);
+    });
 
 });
