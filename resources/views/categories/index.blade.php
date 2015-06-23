@@ -6,6 +6,9 @@
                     <header>
                         <h1>Categorias</h1>
                     </header>
+
+                    <a href="{{ route('categories_create') }}" title="create" class="btn btn-success" >Nova Categoria</a>
+
                     <table>
                         <thead>
                         <tr>

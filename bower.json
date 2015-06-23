@@ -1,0 +1,29 @@
+{
+  "name": "CodeCommerce",
+  "authors": [
+    "Candido Souza <candido_souzza@hotmail.com>"
+  ],
+  "description": "CodeCommerce",
+  "homepage": "http://www.candidosouza.com.br",
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "node_modules",
+    "test",
+    "tests"
+  ],
+  "version": "0.0.1",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "estudos"
+  ],
+  "license": "MIT",
+  "dependencies": {
+        "jquery" : "latest",
+        "animate.css" : "latest",
+        "html5shiv" : "latest",
+        "jquery.easing" : "latest"
+      }
+}

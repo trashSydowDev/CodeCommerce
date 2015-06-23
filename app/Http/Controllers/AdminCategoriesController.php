@@ -30,6 +30,16 @@ class AdminCategoriesController extends Controller
     }
 
     /**
+     * Create categories.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function createAction()
+    {
+        return view('categories.create');
+    }
+
+    /**
      * Show categories.
      *
      * @param $id

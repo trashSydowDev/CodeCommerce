@@ -26,9 +26,12 @@ Route::group(['prefix' => 'admin'], function(){
 
         get('/', ['as' => 'categories', 'uses' => 'AdminCategoriesController@index']);
 
+        get('/create',['as'=>'categories_create','uses'=>'AdminCategoriesController@createAction']);
+
         Route::group(['prefix' => '{id}'], function(){
 
             get('/', ['as'=>'categories_show','uses'=>'AdminCategoriesController@show']);
+
 
             get('/delete',['as'=>'categories_delete','uses'=>'AdminCategoriesController@deleteAction']);
 
