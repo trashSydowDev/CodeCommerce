@@ -19,6 +19,10 @@ As descrições do projeto, etapa por etapa, vc encontra no arquivo projeto.txt
 
 >1º Etapa. *Instalando e versionando*
 
+>2º Etapa. *Criando os primeiros Models*
+
+>3º Etapa. *Criação das rotas*
+
 **Uso**
 
 > - git clone https://github.com/candidosouza/CodeCommerce.git

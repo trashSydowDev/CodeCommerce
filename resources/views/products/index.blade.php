@@ -15,6 +15,7 @@
                             <th>Valor</th>
                             <th>Criado Em:</th>
                             <th>Atualizado Em:</th>
+                            <th>Acões</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -26,6 +27,10 @@
                                     <td>R$: {{ $product->price }}</td>
                                     <td>{{ $product->created_at }}</td>
                                     <td>{{ $product->updated_at }}</td>
+                                    <td><a href="{{ route('products_show',['id'=>$product->id]) }}" title="Visualizar" class="btn btn-success" >Visualizar</a></td>
+                                    <td><a href="{{ route('products_api_show',['id'=>$product->id]) }}" title="api" class="btn btn-success" >API</a></td>
+                                    <td><a href="{{ route('products_edit',['id'=>$product->id]) }}" title="editar" class="btn btn-info" >Editar</a></td>
+                                    <td><a href="{{ route('products_delete',['id'=>$product->id]) }}" title="delete" class="btn btn-danger" >Delete</a></td>
                                 </tr>
                             @endforeach
                         </tbody>

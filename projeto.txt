@@ -4,3 +4,42 @@
 
 Nessa primeira fase do projeto, você deverá instalar o Laravel, mudar o namespace padrão da aplicação para CodeCommerce e versionar todos os arquivos criados no Git.
 Não esqueça de testar a aplicação rodando o comando: php artisan serve
+
+
+***************************************************************************************
+*************************2º Etapa. Criando os primeiros Models
+***************************************************************************************
+
+Nessa fase do projeto, você deverá criar 2 models:
+
+Category
+name - varchar(80)
+description - text
+Product
+name - varchar(80)
+description - text
+price - decimal
+Todos esses campos apresentados devem ser utilizados como Mass Assigment.
+
+Registre 2 rotas:
+
+- admin/categories: Deve apontar para o controller AdminCategoriesController e para action index
+
+- admin/products: Deve apontar para o controller AdminProductsController e para action index
+
+Quando o usuário acessar qualquer uma dessas rotas, ele deverá acessar a listagem dos registros do model correspondente.
+
+
+***************************************************************************************
+*************************3º Etapa. Criação das rotas
+***************************************************************************************
+
+Agora que você já possui os dois models criados, crie as rotas necessárias para que possamos realizar um CRUD em cada model.
+
+Para facilitar a administração do arquivo de rotas, as mesmas deverão ser totalmente agrupadas pelo prefixo: admin e pelo seu próprio model.
+
+Exemplo: admin/products, admin/categories
+
+OBS: Enquanto nem todos os controllers e actions ainda não estão definidos, aponte as rotas para um controller e action qualquer.
+
+OBS 2: Todas as rotas devem possuir nome e seus parâmetros devem ser validados.

@@ -13,9 +13,9 @@
         <section class="container">
             <div class="content">
                 <article>
-                    <a href="/admin/categories" title="Categorias" >Categorias</a> |
-                    <a href="/admin/products" title="Produtos" >Produtos</a>
-
+                    <a href="{{ url('/') }}" title="Home" >Home</a> |
+                    <a href="{{ url('/admin/categories') }}" title="Categorias" >Categorias</a> |
+                    <a href="{{ url('/admin/products') }}" title="Produtos" >Produtos</a>
                     @yield('content')
                 </article>
             </div>

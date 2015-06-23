@@ -18,7 +18,7 @@ class AdminCategoriesController extends Controller
     }
 
     /**
-     * Show the application welcome screen to the user.
+     * Show categories all
      *
      * @return Response
      */
@@ -26,6 +26,71 @@ class AdminCategoriesController extends Controller
     {
         $categories = $this->categories->all();
 
-        return view('categories', compact('categories'));
+        return view('categories.index', compact('categories'));
     }
-} 
+
+    /**
+     * Show categories.
+     *
+     * @param $id
+     * @return \Illuminate\View\View
+     */
+    public function show($id)
+    {
+        $categories_id = $this->categories->find($id);
+
+        return view('categories.show', compact('categories_id'));
+    }
+
+    /**
+     * Show categories.
+     *
+     * @param $id
+     * @return \Illuminate\View\View
+     */
+    public function showAction($id)
+    {
+        $categories_id = $this->categories->find($id);
+
+        return view('categories.show', compact('categories_id'));
+    }
+
+    /**
+     * Edit Categories
+     *
+     * @param $id
+     * @return \Illuminate\View\View
+     */
+    public function editAction($id)
+    {
+        $categories_id = $this->categories->find($id);
+
+        return view('categories.show', compact('categories_id'));
+    }
+
+    /**
+     * Update Categories
+     *
+     * @param $id
+     * @return \Illuminate\View\View
+     */
+    public function updateAction($id)
+    {
+        $categories_id = $this->categories->find($id);
+
+        return view('categories.show', compact('categories_id'));
+    }
+
+    /**
+     * Delete Categories
+     *
+     * @param $id
+     * @return \Illuminate\View\View
+     */
+    public function deleteAction($id)
+    {
+        $categories_id = $this->categories->find($id);
+
+        return view('categories.show', compact('categories_id'));
+    }
+}
