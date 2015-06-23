@@ -26,11 +26,15 @@ Route::group(['prefix' => 'admin'], function(){
 
         get('/', ['as' => 'categories', 'uses' => 'AdminCategoriesController@index']);
 
-        get('/{id}', ['as'=>'categories_show','uses'=>'AdminCategoriesController@show']);
+        Route::group(['prefix' => '{id}'], function(){
 
-        get('/{id}/delete',['as'=>'categories_delete','uses'=>'AdminCategoriesController@deleteAction']);
+            get('/', ['as'=>'categories_show','uses'=>'AdminCategoriesController@show']);
 
-        get('/{id}/edit',['as'=>'categories_edit','uses'=>'AdminCategoriesController@editAction']);
+            get('/delete',['as'=>'categories_delete','uses'=>'AdminCategoriesController@deleteAction']);
+
+            get('/edit',['as'=>'categories_edit','uses'=>'AdminCategoriesController@editAction']);
+
+        });
 
         // CATEGORIAS API
         get('/api/{category}', ['as' => 'categories_api_show',  function(Category $category) {
@@ -43,16 +47,21 @@ Route::group(['prefix' => 'admin'], function(){
 
         get('/', ['as' => 'products', 'uses' => 'AdminProductsController@index']);
 
-        get('/{id}', ['as'=>'products_show','uses'=>'AdminProductsController@showAction']);
+        Route::group(['prefix' => '{id}'], function(){
 
-        get('/{id}/delete',['as'=>'products_delete','uses'=>'AdminProductsController@deleteAction']);
+            get('/', ['as'=>'products_show','uses'=>'AdminProductsController@showAction']);
 
-        get('/{id}/edit',['as'=>'products_edit','uses'=>'AdminProductsController@editAction']);
+            get('/delete',['as'=>'products_delete','uses'=>'AdminProductsController@deleteAction']);
+
+            get('/edit',['as'=>'products_edit','uses'=>'AdminProductsController@editAction']);
+
+        });
 
         // PRODUTOS API
         get('/api/{products}', ['as' => 'products_api_show',  function(Product $products) {
             return $products;
         }]);
+
     });
 
 });
