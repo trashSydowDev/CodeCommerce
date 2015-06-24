@@ -6,6 +6,7 @@
             <header>
                 <h1>Categoria {{ $categories_id->name }}</h1>
             </header>
+            <a href="{{ route('categories') }}" title="Home" class="btn btn-success" >Voltar para as Categorias</a>
             <table>
                 <thead>
                 <tr>

@@ -7,6 +7,8 @@
                 <h1>Edição de Categoria {{ $categories_id->name }}</h1>
             </header>
 
+            <a href="{{ route('categories') }}" title="Home" class="btn btn-success" >Voltar para as Categorias</a>
+
             @if ($errors->any())
 
                     @foreach($errors->all() as $error)
