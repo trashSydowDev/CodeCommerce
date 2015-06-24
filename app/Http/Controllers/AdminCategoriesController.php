@@ -3,6 +3,7 @@
 namespace CodeCommerce\Http\Controllers;
 
 use CodeCommerce\Category;
+use Illuminate\Http\Request;
 
 class AdminCategoriesController extends Controller
 {
@@ -37,6 +38,23 @@ class AdminCategoriesController extends Controller
     public function createAction()
     {
         return view('categories.create');
+    }
+
+    /**
+     * Stores the data in the database
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function store(Request $request)
+    {
+        $data = $request->all();
+
+        $category = $this->categories->fill($data);
+
+        $category->save();
+
+        return redirect('admin/categories');
     }
 
     /**

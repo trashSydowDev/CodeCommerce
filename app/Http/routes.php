@@ -26,7 +26,10 @@ Route::group(['prefix' => 'admin'], function(){
 
         get('/', ['as' => 'categories', 'uses' => 'AdminCategoriesController@index']);
 
+        post('/',['as'=>'categories','uses'=>'AdminCategoriesController@store']);
+
         get('/create',['as'=>'categories_create','uses'=>'AdminCategoriesController@createAction']);
+
 
         Route::group(['prefix' => '{id}'], function(){
 
