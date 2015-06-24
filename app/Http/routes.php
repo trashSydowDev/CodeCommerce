@@ -28,7 +28,7 @@ Route::group(['prefix' => 'admin'], function(){
 
         post('/',['as'=>'categories','uses'=>'AdminCategoriesController@store']);
 
-        get('/create',['as'=>'categories_create','uses'=>'AdminCategoriesController@createAction']);
+        get('/create',['as'=>'categories_create','uses'=>'AdminCategoriesController@create']);
 
 
         Route::group(['prefix' => '{id}'], function(){
@@ -59,19 +59,29 @@ Route::group(['prefix' => 'admin'], function(){
 
         get('/', ['as' => 'products', 'uses' => 'AdminProductsController@index']);
 
+        post('/',['as'=>'products','uses'=>'AdminProductsController@store']);
+
+        get('/create',['as'=>'products_create','uses'=>'AdminProductsController@create']);
+
         Route::group(['prefix' => '{id}'], function(){
 
-            get('/', ['as'=>'products_show','uses'=>'AdminProductsController@showAction']);
+            get('/', ['as'=>'products_show','uses'=>'AdminProductsController@show']);
 
-            get('/delete',['as'=>'products_delete','uses'=>'AdminProductsController@deleteAction']);
+            get('/delete',['as'=>'products_delete','uses'=>'AdminProductsController@delete']);
 
-            get('/edit',['as'=>'products_edit','uses'=>'AdminProductsController@editAction']);
+            get('/edit',['as'=>'products_edit','uses'=>'AdminProductsController@edit']);
+
+            put('/update',['as'=>'products_update','uses'=>'AdminProductsController@update']);
 
         });
 
+        get('/api/', ['as' => 'products_api',   function(Product $products) {
+            return $products->all();
+        }]);
+
         // PRODUTOS API
-        get('/api/{products}', ['as' => 'products_api_show',  function(Product $products) {
-            return $products;
+        get('/api/{products}', ['as' => 'products_api_show',  function(Product $products, $id) {
+            return $products->find($id);
         }]);
 
     });

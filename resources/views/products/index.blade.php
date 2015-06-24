@@ -6,6 +6,11 @@
                     <header>
                         <h1>Produtos</h1>
                     </header>
+
+                    <a href="{{ route('products_create') }}" title="create" class="btn btn-success" >Novo Produto</a>
+
+                    <a href="{{ route('products_api') }}" title="api" class="btn btn-primary" >Produtos API</a>
+
                     <table>
                         <thead>
                         <tr>
@@ -13,8 +18,8 @@
                             <th>Nome</th>
                             <th>Descrição</th>
                             <th>Valor</th>
-                            <th>Criado Em:</th>
-                            <th>Atualizado Em:</th>
+                            <th>Destaque</th>
+                            <th>Recomendado</th>
                             <th>Acões</th>
                         </tr>
                         </thead>
@@ -25,8 +30,8 @@
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->description }}</td>
                                     <td>R$: {{ $product->price }}</td>
-                                    <td>{{ $product->created_at }}</td>
-                                    <td>{{ $product->updated_at }}</td>
+                                    <td>{{ $product->featured }}</td>
+                                    <td>{{ $product->recommend }}</td>
                                     <td><a href="{{ route('products_show',['id'=>$product->id]) }}" title="Visualizar" class="btn btn-success" >Visualizar</a></td>
                                     <td><a href="{{ route('products_api_show',['id'=>$product->id]) }}" title="api" class="btn btn-success" >API</a></td>
                                     <td><a href="{{ route('products_edit',['id'=>$product->id]) }}" title="editar" class="btn btn-info" >Editar</a></td>

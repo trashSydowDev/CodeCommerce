@@ -90,9 +90,27 @@ article form:last-child {
   margin-right: 0%;
 }
 article label {
+  *zoom: 1;
+  float: left;
+  clear: none;
+  text-align: inherit;
+  width: 100%;
+  margin-left: 0%;
+  margin-right: 3%;
   font-family: 'Lato';
   font-weight: 300;
   font-size: 1em;
+}
+article label:before,
+article label:after {
+  content: '';
+  display: table;
+}
+article label:after {
+  clear: both;
+}
+article label:last-child {
+  margin-right: 0%;
 }
 article table {
   width: 100%;

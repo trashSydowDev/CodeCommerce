@@ -2,6 +2,7 @@
 
 namespace CodeCommerce\Http\Controllers;
 
+use CodeCommerce\Http\Requests\ProductsRequest;
 use CodeCommerce\Product;
 
 class AdminProductsController extends Controller
@@ -35,11 +36,38 @@ class AdminProductsController extends Controller
      * @param $id
      * @return \Illuminate\View\View
      */
-    public function showAction($id)
+    public function show($id)
     {
         $products_id = $this->products->find($id);
 
         return view('products.show', compact('products_id'));
+    }
+
+    /**
+     * Create products.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function create()
+    {
+        return view('products.create');
+    }
+
+    /**
+     * Stores the data in the database
+     *
+     * @param ProductsRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(ProductsRequest $request)
+    {
+        $data = $request->all();
+
+        $category = $this->products->fill($data);
+
+        $category->save();
+
+        return redirect()->route('products');
     }
 
     /**
@@ -48,36 +76,37 @@ class AdminProductsController extends Controller
      * @param $id
      * @return \Illuminate\View\View
      */
-    public function editAction($id)
+    public function edit($id)
     {
         $products_id = $this->products->find($id);
 
-        return view('products.show', compact('products_id'));
+        return view('products.edit', compact('products_id'));
     }
 
     /**
      * Update Products
      *
+     * @param ProductsRequest $request
      * @param $id
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function updateAction($id)
+    public function update(ProductsRequest $request, $id)
     {
-        $products_id = $this->products->find($id);
+        $this->products->find($id)->update($request->all());
 
-        return view('products.show', compact('products_id'));
+        return redirect()->route('products');
     }
 
     /**
      * Delete Products
      *
      * @param $id
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function deleteAction($id)
+    public function delete($id)
     {
-        $products_id = $this->products->find($id);
+        $this->products->find($id)->delete();
 
-        return view('products.show', compact('products_id'));
+        return redirect()->route('products');
     }
 }

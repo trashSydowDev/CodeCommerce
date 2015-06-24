@@ -35,7 +35,7 @@ class AdminCategoriesController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function createAction()
+    public function create()
     {
         return view('categories.create');
     }

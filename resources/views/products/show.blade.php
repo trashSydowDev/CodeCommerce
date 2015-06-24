@@ -13,6 +13,8 @@
                     <th>Nome</th>
                     <th>Descrição</th>
                     <th>valor</th>
+                    <th>Destaque</th>
+                    <th>Recomendado</th>
                     <th>Criado Em:</th>
                     <th>Atualizado Em:</th>
                 </tr>
@@ -23,6 +25,8 @@
                     <td>{{ $products_id->name }}</td>
                     <td>{{ $products_id->description }}</td>
                     <td>{{ $products_id->price }}</td>
+                    <td>{{ $products_id->featured }}</td>
+                    <td>{{ $products_id->recommend }}</td>
                     <td>{{ $products_id->created_at }}</td>
                     <td>{{ $products_id->updated_at }}</td>
                 </tr>
