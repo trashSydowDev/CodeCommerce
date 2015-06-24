@@ -23,7 +23,7 @@ class CategoryRequest extends Request
     protected function formatErrors(Validator $validator)
     {
         $messages = [
-            'required' => 'Por favor preencha todos os campos, com mais de 5 caracteres',
+            'required' => 'Por favor preencha todos os campos, com mais de 5 caracteres, em cada campo.',
         ];
 
         return $validator->errors()->all($messages);

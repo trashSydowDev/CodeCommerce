@@ -44,9 +44,14 @@ Route::group(['prefix' => 'admin'], function(){
         });
 
         // CATEGORIAS API
-        get('/api/{category}', ['as' => 'categories_api_show',  function(Category $category) {
-            return $category;
+        get('/api/', ['as' => 'categories_api',  function(Category $category) {
+            return $category->all();
         }]);
+
+        get('/api/{category}', ['as' => 'categories_api_show',  function(Category $category, $id) {
+            return $category->find($id);
+        }]);
+
     });
 
     // PRODUTOS

@@ -9,6 +9,8 @@
 
                     <a href="{{ route('categories_create') }}" title="create" class="btn btn-success" >Nova Categoria</a>
 
+                    <a href="{{ route('categories_api') }}" title="api" class="btn btn-primary" >Categorias API</a>
+
                     <table>
                         <thead>
                         <tr>
@@ -29,7 +31,7 @@
                                     <td>{{ $category->created_at }}</td>
                                     <td>{{ $category->updated_at }}</td>
                                     <td><a href="{{ route('categories_show',['id'=>$category->id]) }}" title="Visualizar" class="btn btn-success" >Visualizar</a></td>
-                                    <td><a href="{{ route('categories_api_show',['id'=>$category->id]) }}" title="api" class="btn btn-success" >API</a></td>
+                                    <td><a href="{{ route('categories_api_show',['id'=>$category->id]) }}" title="api" class="btn btn-primary" >API</a></td>
                                     <td><a href="{{ route('categories_edit',['id'=>$category->id]) }}" title="editar" class="btn btn-info" >Editar</a></td>
                                     <td><a href="{{ route('categories_delete',['id'=>$category->id]) }}" title="delete" class="btn btn-danger" >Delete</a></td>
 
