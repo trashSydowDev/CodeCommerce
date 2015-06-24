@@ -3,7 +3,7 @@
 namespace CodeCommerce\Http\Controllers;
 
 use CodeCommerce\Category;
-use Illuminate\Http\Request;
+use CodeCommerce\Http\Requests\CategoryRequest;
 
 class AdminCategoriesController extends Controller
 {
@@ -43,10 +43,10 @@ class AdminCategoriesController extends Controller
     /**
      * Stores the data in the database
      *
-     * @param Request $request
+     * @param CategoryRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         $data = $request->all();
 
@@ -54,7 +54,7 @@ class AdminCategoriesController extends Controller
 
         $category->save();
 
-        return redirect('admin/categories');
+        return redirect()->route('categories');
     }
 
     /**
@@ -71,42 +71,30 @@ class AdminCategoriesController extends Controller
     }
 
     /**
-     * Show categories.
-     *
-     * @param $id
-     * @return \Illuminate\View\View
-     */
-    public function showAction($id)
-    {
-        $categories_id = $this->categories->find($id);
-
-        return view('categories.show', compact('categories_id'));
-    }
-
-    /**
      * Edit Categories
      *
      * @param $id
      * @return \Illuminate\View\View
      */
-    public function editAction($id)
+    public function edit($id)
     {
         $categories_id = $this->categories->find($id);
 
-        return view('categories.show', compact('categories_id'));
+        return view('categories.edit', compact('categories_id'));
     }
 
     /**
      * Update Categories
      *
+     * @param CategoryRequest $request
      * @param $id
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function updateAction($id)
+    public function update(CategoryRequest $request, $id)
     {
-        $categories_id = $this->categories->find($id);
+        $this->categories->find($id)->update($request->all());
 
-        return view('categories.show', compact('categories_id'));
+        return redirect()->route('categories');
     }
 
     /**
@@ -115,10 +103,10 @@ class AdminCategoriesController extends Controller
      * @param $id
      * @return \Illuminate\View\View
      */
-    public function deleteAction($id)
+    public function delete($id)
     {
-        $categories_id = $this->categories->find($id);
+        $this->categories->find($id)->delete();
 
-        return view('categories.show', compact('categories_id'));
+        return redirect()->route('categories');
     }
 }

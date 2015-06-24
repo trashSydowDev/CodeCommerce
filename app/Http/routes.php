@@ -35,10 +35,11 @@ Route::group(['prefix' => 'admin'], function(){
 
             get('/', ['as'=>'categories_show','uses'=>'AdminCategoriesController@show']);
 
+            get('/delete',['as'=>'categories_delete','uses'=>'AdminCategoriesController@delete']);
 
-            get('/delete',['as'=>'categories_delete','uses'=>'AdminCategoriesController@deleteAction']);
+            get('/edit',['as'=>'categories_edit','uses'=>'AdminCategoriesController@edit']);
 
-            get('/edit',['as'=>'categories_edit','uses'=>'AdminCategoriesController@editAction']);
+            put('/update',['as'=>'categories_update','uses'=>'AdminCategoriesController@update']);
 
         });
 

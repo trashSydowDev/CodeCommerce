@@ -3,6 +3,7 @@
 namespace CodeCommerce\Http\Requests;
 
 use CodeCommerce\Http\Requests\Request;
+use Illuminate\Contracts\Validation\Validator;
 
 class CategoryRequest extends Request
 {
@@ -13,7 +14,19 @@ class CategoryRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function formatErrors(Validator $validator)
+    {
+        $messages = [
+            'required' => 'Por favor preencha todos os campos, com mais de 5 caracteres',
+        ];
+
+        return $validator->errors()->all($messages);
     }
 
     /**
@@ -24,7 +37,8 @@ class CategoryRequest extends Request
     public function rules()
     {
         return [
-            //
+            'name' => 'required|min:5',
+            'description' => 'required|min:5',
         ];
     }
 }

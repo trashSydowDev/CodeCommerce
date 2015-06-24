@@ -245,3 +245,53 @@ input[type="color"] {
   margin: 4px 10px 0 0;
   cursor: pointer;
 }
+.alert-success {
+  *zoom: 1;
+  float: left;
+  clear: none;
+  text-align: inherit;
+  width: 100%;
+  margin-left: 0%;
+  margin-right: 3%;
+  text-align: center;
+  padding: 15px;
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+.alert-success:before,
+.alert-success:after {
+  content: '';
+  display: table;
+}
+.alert-success:after {
+  clear: both;
+}
+.alert-success:last-child {
+  margin-right: 0%;
+}
+.alert-danger {
+  *zoom: 1;
+  float: left;
+  clear: none;
+  text-align: inherit;
+  width: 100%;
+  margin-left: 0%;
+  margin-right: 3%;
+  text-align: center;
+  padding: 20px 0;
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+.alert-danger:before,
+.alert-danger:after {
+  content: '';
+  display: table;
+}
+.alert-danger:after {
+  clear: both;
+}
+.alert-danger:last-child {
+  margin-right: 0%;
+}

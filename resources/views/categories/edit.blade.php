@@ -4,7 +4,7 @@
     <div class="content">
         <article>
             <header>
-                <h1>Nova Categoria de Produtos</h1>
+                <h1>Edição de Categoria {{ $categories_id->name }}</h1>
             </header>
 
             @if ($errors->any())
@@ -17,17 +17,17 @@
 
 
 
-            {!! Form::open(['route' => 'categories']) !!}
+            {!! Form::open(['route' => ['categories_update', $categories_id->id], 'method' => 'put']) !!}
 
                 {!! Form::label('name', 'Nome:') !!}
 
-                {!! Form::text('name', null, ['placeholder' => 'Nome da categoria']) !!}
+                {!! Form::text('name', $categories_id->name, ['placeholder' => 'Nome da categoria']) !!}
 
                 {!! Form::label('description', 'Descrição:') !!}
 
-                {!! Form::textarea('description', null, ['placeholder' => 'Descrição da categoria']) !!}
+                {!! Form::textarea('description', $categories_id->description, ['placeholder' => 'Descrição da categoria']) !!}
 
-                {!! Form::submit('Adicionar Categoria', ['class' => 'btn btn-success']) !!}
+                {!! Form::submit('Atualizar', ['class' => 'btn btn-success']) !!}
 
             {!! Form::close() !!}
 
