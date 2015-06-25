@@ -43,3 +43,16 @@ Exemplo: admin/products, admin/categories
 OBS: Enquanto nem todos os controllers e actions ainda não estão definidos, aponte as rotas para um controller e action qualquer.
 
 OBS 2: Todas as rotas devem possuir nome e seus parâmetros devem ser validados.
+
+
+***************************************************************************************
+*************************4º Etapa. Seeding
+***************************************************************************************
+
+Nessa fase, você deverá adicionar dados Fakes nas seguintes entidades:
+
+- User
+
+- Category
+
+- Product
