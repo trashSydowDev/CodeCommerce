@@ -34,8 +34,9 @@ $factory->define(Category::class, function ($faker) {
 $factory->define(Product::class, function ($faker) {
     return [
         'name' => $faker->word(),
-        'description' => $faker->sentence(),
+        'description'   => $faker->sentence(),
         'price'         => $faker->randomNumber(2),
+        'category_id'   => $faker->numberBetween(1,15),
         'featured'      => 1,
         'recommend'     => 0
     ];

@@ -21,6 +21,10 @@
 
             {!! Form::open(['route' => ['products_update', $products_id->id], 'method' => 'put']) !!}
 
+                {!! Form::label('category', 'Categoria:') !!}
+
+                {!! Form::select('category_id', $categories,  $products_id->category->id) !!}
+
                 {!! Form::label('name', 'Nome:') !!}
 
                 {!! Form::text('name', $products_id->name, ['placeholder' => 'Nome do Poduto']) !!}

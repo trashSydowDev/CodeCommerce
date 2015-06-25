@@ -13,7 +13,7 @@ class Category extends Model
 
     public function products()
     {
-        return $this->hasMany('CodeCommerce\Products');
+        return $this->hasMany('CodeCommerce\Product');
     }
 
 

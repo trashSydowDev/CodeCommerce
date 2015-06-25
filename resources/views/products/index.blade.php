@@ -18,6 +18,7 @@
                             <th>Nome</th>
                             <th>Descrição</th>
                             <th>Valor</th>
+                            <th>Cat</th>
                             <th>Destaque</th>
                             <th>Recomendado</th>
                             <th>Acões</th>
@@ -30,10 +31,11 @@
                                     <td>{{ $product->name }}</td>
                                     <td>{{ str_limit($product->description, $limit = 15, $end = '...') }}</td>
                                     <td>R$: {{ $product->price }}</td>
+                                    <td><a href="{{ route('categories_show',['id'=>$product->category->id]) }}" title="Categoria" >{{ $product->category->name }}</a></td>
                                     <td>{{ $product->featured }}</td>
                                     <td>{{ $product->recommend }}</td>
                                     <td><a href="{{ route('products_show',['id'=>$product->id]) }}" title="Visualizar" class="btn btn-success" >Visualizar</a></td>
-                                    <td><a href="{{ route('products_api_show',['id'=>$product->id]) }}" title="api" class="btn btn-success" >API</a></td>
+                                    <td><a href="{{ route('products_api_show',['id'=>$product->id]) }}" title="api" class="btn btn-primary" >API</a></td>
                                     <td><a href="{{ route('products_edit',['id'=>$product->id]) }}" title="editar" class="btn btn-info" >Editar</a></td>
                                     <td><a href="{{ route('products_delete',['id'=>$product->id]) }}" title="delete" class="btn btn-danger" >Delete</a></td>
                                 </tr>

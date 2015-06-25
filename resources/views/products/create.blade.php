@@ -21,6 +21,10 @@
 
             {!! Form::open(['route' => 'products']) !!}
 
+                {!! Form::label('category', 'Categoria:') !!}
+
+                {!! Form::select('category_id', $categories, null) !!}
+
                 {!! Form::label('name', 'Nome:') !!}
 
                 {!! Form::text('name', null, ['placeholder' => 'Nome do Produto']) !!}

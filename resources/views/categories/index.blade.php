@@ -33,6 +33,7 @@
                                     <td><a href="{{ route('categories_show',['id'=>$category->id]) }}" title="Visualizar" class="btn btn-success" >Visualizar</a></td>
                                     <td><a href="{{ route('categories_api_show',['id'=>$category->id]) }}" title="api" class="btn btn-primary" >API</a></td>
                                     <td><a href="{{ route('categories_edit',['id'=>$category->id]) }}" title="editar" class="btn btn-info" >Editar</a></td>
+                                    <td><a href="{{ route('products',['products'=>$category->products]) }}" title="editar" class="btn btn-warning" >Produtos relac.</a></td>
                                     <td><a href="{{ route('categories_delete',['id'=>$category->id]) }}" title="delete" class="btn btn-danger" >Delete</a></td>
 
                                 </tr>

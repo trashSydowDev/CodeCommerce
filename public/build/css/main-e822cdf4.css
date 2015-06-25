@@ -119,10 +119,10 @@ article table thead {
   text-align: center;
   font-family: 'Lato';
   font-weight: 300;
-  font-size: 1.3em;
+  font-size: 1em;
 }
 article table tbody {
-  text-align: center;
+  text-align: left;
   font-family: 'Lato';
   font-weight: 300;
   font-size: 1.2em;
@@ -131,18 +131,18 @@ article table tbody {
 article a {
   font-family: 'Lato';
   font-weight: 300;
-  font-size: 2em;
+  font-size: 1em;
   text-decoration: none;
-  color: #337ab7;
+  color: #d9534f;
 }
 article a:hover {
-  text-decoration: underline;
+  color: #ccc;
 }
 header {
   text-align: center;
   font-family: 'Lato';
   font-weight: 300;
-  font-size: 2.5em;
+  font-size: 1.2em;
   color: #337ab7;
 }
 /*HELPERS*/
