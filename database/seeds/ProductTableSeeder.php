@@ -3,37 +3,32 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use \Illuminate\Support\Facades\DB;
-use Faker\Factory as Faker;
 use CodeCommerce\Product;
 
-
+/**
+ * Class ProductTableSeeder
+ */
 class ProductTableSeeder extends Seeder
 {
     private $product;
-    private $faker;
 
-    public function __construct(Faker $faker, Product $product)
+    /**
+     * Construct
+     *
+     * @param Product $product
+     */
+    public function __construct(Product $product)
     {
         $this->product = $product;
-        $this->faker = $faker;
     }
 
+    /**
+     * Inserção de dados na tabela Products
+     */
     public function run()
     {
         DB::table('products')->truncate();
 
-        $faker = $this->faker->create();
-
-        foreach (range(1,7) as $i) {
-            $this->product->create([
-                'name' => $faker->word(),
-                'description' => $faker->sentence(),
-                'price'         => $faker->randomNumber(2),
-                'featured'      => 1,
-                'recommend'     => 0
-            ]);
-
-        }
-
+        factory('CodeCommerce\Product', 7)->create();
     }
 } 

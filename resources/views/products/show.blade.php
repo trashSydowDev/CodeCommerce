@@ -6,6 +6,9 @@
             <header>
                 <h1>Produto {{ $products_id->name }}</h1>
             </header>
+
+            <a href="{{ route('products') }}" title="Home" class="btn btn-success" >Voltar para os Produtos</a>
+
             <table>
                 <thead>
                 <tr>

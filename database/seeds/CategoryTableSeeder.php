@@ -3,33 +3,33 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use Faker\Factory as Faker;
 use CodeCommerce\Category;
 
-
+/**
+ * Class CategoryTableSeeder
+ */
 class CategoryTableSeeder extends Seeder
 {
     private $category;
-    private $faker;
 
-    public function __construct(Faker $faker, Category $category)
+    /**
+     * Construct
+     *
+     * @param Category $category
+     */
+    public function __construct (Category $category)
     {
         $this->category = $category;
-        $this->faker = $faker;
     }
 
+    /**
+     * Inserção de dados na tabela Categories
+     */
     public function run()
     {
         DB::table('categories')->truncate();
 
-        $faker = $this->faker->create();
+        factory('CodeCommerce\Category', 7)->create();
 
-        foreach (range(1,7) as $i) {
-            $this->category->create([
-                'name' => $faker->word(),
-                'description' => $faker->sentence(),
-            ]);
-
-        }
     }
 } 
