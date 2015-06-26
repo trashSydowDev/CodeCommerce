@@ -7,8 +7,6 @@
                 <h1>Edição de Produtos {{ $products_id->name }}</h1>
             </header>
 
-            <a href="{{ route('products') }}" title="Home" class="btn btn-success" >Voltar para os Produtos</a>
-
             @if ($errors->any())
 
                     @foreach($errors->all() as $error)

@@ -7,8 +7,6 @@
                 <h1>Novo Produto</h1>
             </header>
 
-            <a href="{{ route('products') }}" title="Home" class="btn btn-success" >Voltar para os Produtos</a>
-
             @if ($errors->any())
 
                     @foreach($errors->all() as $error)

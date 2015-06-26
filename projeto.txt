@@ -56,3 +56,21 @@ Nessa fase, você deverá adicionar dados Fakes nas seguintes entidades:
 - Category
 
 - Product
+
+
+***************************************************************************************
+*************************5º Etapa. Relacionando
+***************************************************************************************
+
+Essa fase do projeto é bem simples.
+
+Você apenas deverá criar o relacionamento entre os Models, exatamente como fiz nesse capítulo.
+
+Também, você deverá implementar a paginação em todos os CRUDs.
+
+OBS: Não se esqueça de checar se suas rotas estão seguindo o mesmo padrão que estou utilizando.
+
+Boa sorte!
+
+
+<td><a href="{{ route('products_categories',['id'=>$category->products]) }}" title="produtos relacionados" class="btn btn-primary" >Produtos relac.</a></td>

@@ -9,7 +9,9 @@
 
                     <a href="{{ route('products_create') }}" title="create" class="btn btn-success" >Novo Produto</a>
 
-                    <a href="{{ route('products_api') }}" title="api" class="btn btn-primary" >Produtos API</a>
+                    <a href="{{ route('products_api') }}" title="api" class="btn btn-default" >Produtos API</a>
+
+                    {!! $products->render() !!}
 
                     <table>
                         <thead>
@@ -35,13 +37,15 @@
                                     <td>{{ $product->featured }}</td>
                                     <td>{{ $product->recommend }}</td>
                                     <td><a href="{{ route('products_show',['id'=>$product->id]) }}" title="Visualizar" class="btn btn-success" >Visualizar</a></td>
-                                    <td><a href="{{ route('products_api_show',['id'=>$product->id]) }}" title="api" class="btn btn-primary" >API</a></td>
+                                    <td><a href="{{ route('products_api_show',['id'=>$product->id]) }}" title="api" class="btn btn-default" >API</a></td>
                                     <td><a href="{{ route('products_edit',['id'=>$product->id]) }}" title="editar" class="btn btn-info" >Editar</a></td>
                                     <td><a href="{{ route('products_delete',['id'=>$product->id]) }}" title="delete" class="btn btn-danger" >Delete</a></td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
+
+                    {!! $products->render() !!}
                 </article>
             </div>
         </section>

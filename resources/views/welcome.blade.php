@@ -21,9 +21,9 @@
             <section class="container">
                 <div class="content">
                     <article>
-                        <a href="{{ url('/') }}" title="Home" >Home</a> |
-                        <a href="{{ url('/admin/categories') }}" title="Categorias" >Categorias</a> |
-                        <a href="{{ url('/admin/products    ') }}" title="Produtos" >Produtos</a>
+                        <a href="{{ route('index') }}" title="Home" >Home</a> |
+                        <a href="{{ route('categories') }}" title="Categorias" >Categorias</a> |
+                        <a href="{{ route('products') }}" title="Produtos" >Produtos</a>
                         @yield('content')
                     </article>
                 </div>

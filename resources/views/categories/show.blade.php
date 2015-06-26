@@ -6,7 +6,6 @@
             <header>
                 <h1>Categoria {{ $categories_id->name }}</h1>
             </header>
-            <a href="{{ route('categories') }}" title="Home" class="btn btn-success" >Voltar para as Categorias</a>
             <table>
                 <thead>
                 <tr>
@@ -22,8 +21,8 @@
                     <td>{{ $categories_id->id }}</td>
                     <td>{{ $categories_id->name }}</td>
                     <td>{{ $categories_id->description }}</td>
-                    <td>{{ $categories_id->created_at }}</td>
-                    <td>{{ $categories_id->updated_at }}</td>
+                    <td>{{ date('d/m/Y', strtotime($categories_id->created_at)) }}</td>
+                    <td>{{ date('d/m/Y', strtotime($categories_id->updated_at)) }}</td>
                 </tr>
                 </tbody>
             </table>

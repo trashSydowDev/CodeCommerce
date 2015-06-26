@@ -7,15 +7,14 @@
                 <h1>Produto {{ $products_id->name }}</h1>
             </header>
 
-            <a href="{{ route('products') }}" title="Home" class="btn btn-success" >Voltar para os Produtos</a>
-
             <table>
                 <thead>
                 <tr>
                     <th>Id</th>
                     <th>Nome</th>
                     <th>Descrição</th>
-                    <th>valor</th>
+                    <th>Valor</th>
+                    <th>Cat</th>
                     <th>Destaque</th>
                     <th>Recomendado</th>
                     <th>Criado Em:</th>
@@ -28,10 +27,11 @@
                     <td>{{ $products_id->name }}</td>
                     <td>{{ $products_id->description }}</td>
                     <td>{{ $products_id->price }}</td>
+                    <td><a href="{{ route('categories_show',['id'=>$products_id->category_id]) }}" title="Categoria" >{{ $products_id->category->name }}</a></td>
                     <td>{{ $products_id->featured }}</td>
                     <td>{{ $products_id->recommend }}</td>
-                    <td>{{ $products_id->created_at }}</td>
-                    <td>{{ $products_id->updated_at }}</td>
+                    <td>{{ date('d/m/Y', strtotime($products_id->created_at)) }}</td>
+                    <td>{{ date('d/m/Y', strtotime($products_id->updated_at)) }}</td>
                 </tr>
                 </tbody>
             </table>
