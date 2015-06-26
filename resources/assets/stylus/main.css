@@ -138,12 +138,49 @@ article a {
 article a:hover {
   color: #ccc;
 }
-header {
+header h1 {
   text-align: center;
   font-family: 'Lato';
   font-weight: 300;
   font-size: 1.2em;
+  color: #000;
+}
+aside {
+  *zoom: 1;
+  float: left;
+  clear: none;
+  text-align: inherit;
+  width: 48.5%;
+  margin-left: 0%;
+  margin-right: 3%;
+}
+aside:before,
+aside:after {
+  content: '';
+  display: table;
+}
+aside:after {
+  clear: both;
+}
+aside:last-child {
+  margin-right: 0%;
+}
+aside h1 {
+  text-align: left;
+  font-family: 'Lato';
+  font-weight: 300;
+  font-size: 1.2em;
+  color: #000;
+  padding-top: 40px;
+}
+aside ul {
+  list-style: none;
+  text-align: left;
+  font-family: 'Lato';
+  font-weight: 300;
+  font-size: 1.2em;
   color: #337ab7;
+  padding-top: 20px;
 }
 /*HELPERS*/
 /*BTN*/

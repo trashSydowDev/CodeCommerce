@@ -29,6 +29,17 @@
             <a href="{{ route('categories_edit',['id'=>$categories_id->id]) }}" title="editar" class="btn btn-info" >Editar</a>
             <a href="{{ route('categories_delete',['id'=>$categories_id->id]) }}" title="delete" class="btn btn-danger" >Delete</a>
         </article>
+
+        <aside>
+            <h1>Produtos Relacionados</h1>
+
+            <ul>
+                @foreach($categories_id->products as $prod)
+                <li><a href="{{ route('products_show',['id'=>$prod->id]) }}" title="Produto relacionando" >{{ $prod->name }}</a></li>
+                @endforeach
+            </ul>
+        </aside>
+
     </div>
 </section>
 @stop
