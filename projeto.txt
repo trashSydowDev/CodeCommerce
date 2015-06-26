@@ -71,6 +71,3 @@ Também, você deverá implementar a paginação em todos os CRUDs.
 OBS: Não se esqueça de checar se suas rotas estão seguindo o mesmo padrão que estou utilizando.
 
 Boa sorte!
-
-
-<td><a href="{{ route('products_categories',['id'=>$category->products]) }}" title="produtos relacionados" class="btn btn-primary" >Produtos relac.</a></td>
