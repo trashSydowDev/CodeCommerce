@@ -30,7 +30,7 @@
                                     <td><a href="{{ route('products_show',['id'=>$image->product->id]) }}" title="produto">{{ $image->product->name }}</a></td>
 
 
-                                    <td><a href="{{ route('products_image_show',['id'=>$image->product->id]) }}" title="Visualizar" class="btn btn-success" >Visualizar</a></td>
+                                    <td><a href="{{ route('products_image_show',['id'=>$image->id]) }}" title="Visualizar" class="btn btn-success" >Visualizar</a></td>
                                     <td><a href="{{ route('products_image_delete',['id'=>$image->id]) }}" title="delete" class="btn btn-danger" >Delete</a></td>
                                 </tr>
                             @endforeach

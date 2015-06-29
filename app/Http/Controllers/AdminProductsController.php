@@ -45,6 +45,19 @@ class AdminProductsController extends Controller
     }
 
     /**
+     * Show images product
+     *
+     * @param $id
+     * @return \Illuminate\View\View
+     */
+    public function showImages($id)
+    {
+        $product = $this->products->find($id);
+
+        return view('products.images', compact('product'));
+    }
+
+    /**
      * Create products.
      *
      * @param Category $category

@@ -63,7 +63,9 @@ Route::group(['prefix' => 'admin'], function(){
 
         get('/create',['as'=>'products_create','uses'=>'AdminProductsController@create']);
 
-        get('/images', ['as'=>'products_image','uses'=>'AdminProductsImagesController@index']);
+        get('/images', ['as'=>'products_image_index','uses'=>'AdminProductsImagesController@index']);
+
+        get('/images/{id}', ['as'=>'products_image_show','uses'=>'AdminProductsImagesController@show']);
 
         // products/{id}
         Route::group(['prefix' => '{id}'], function(){
@@ -79,7 +81,7 @@ Route::group(['prefix' => 'admin'], function(){
             // products/{id}/image
             Route::group(['prefix' => 'image'], function(){
 
-                get('/show', ['as'=>'products_image_show','uses'=>'AdminProductsImagesController@show']);
+                get('/', ['as'=>'products_image','uses'=>'AdminProductsController@showImages']);
 
                 get('/create', ['as'=>'products_image_create','uses'=>'AdminProductsImagesController@create']);
 

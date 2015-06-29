@@ -43,9 +43,9 @@ class AdminProductsImagesController extends Controller
      */
     public function show($id)
     {
-        $product = $this->products->find($id);
+        $image = $this->productImage->find($id);
 
-        return view('products.images.show', compact('product'));
+        return view('products.images.show', compact('image'));
     }
 
     /**
@@ -56,9 +56,9 @@ class AdminProductsImagesController extends Controller
      */
     public function create($id)
     {
-        $product = $this->products->find($id);
+        $image = $this->productImage->find($id);
 
-        return view('products.images.create', compact('product'));
+        return view('products.images.create', compact('image'));
     }
 
 
