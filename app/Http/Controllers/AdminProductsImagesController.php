@@ -24,23 +24,28 @@ class AdminProductsImagesController extends Controller
     }
 
     /**
-     * Show images all.
+     * images all.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index()
+    {
+        $images = $this->productImage->all();
+
+        return view('products.images.index', compact('images'));
+    }
+
+    /**
+     * Show images product
      *
      * @param $id
      * @return \Illuminate\View\View
      */
-    public function index($id)
+    public function show($id)
     {
         $product = $this->products->find($id);
 
-        return view('products.images.index', compact('product'));
-    }
-
-    public function show($id)
-    {
-        $images = $this->productImage->find($id);
-
-        return view('products.images.show', compact('images'));
+        return view('products.images.show', compact('product'));
     }
 
     /**
@@ -78,7 +83,7 @@ class AdminProductsImagesController extends Controller
 
         $storage::disk('local_public')->put($image->id . '.' . $extension, File::get($file));
 
-        return redirect()->route('products_image', ['id' => $id]);
+        return redirect()->route('products_image_show', ['id' => $id]);
     }
 
     public function delete($id, Storage $storage)
