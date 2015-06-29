@@ -29,6 +29,7 @@
                     </td>
                     <td>{{ $image->extension }}</td>
                     <td><a href="{{ route('products_show',['id'=>$product->id]) }}" title="produto">{{ $product->name }}</a></td>
+                    <td><a href="{{ route('products_image_show',['id'=>$image->id]) }}" title="Visualizar" class="btn btn-success" >Visualizar</a></td>
                     <td><a href="{{ route('products_image_delete',['id'=>$image->id]) }}" title="delete" class="btn btn-danger" >Delete</a></td>
                 </tr>
                 @endforeach

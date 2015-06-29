@@ -14,9 +14,10 @@
                     <th>Nome</th>
                     <th>Descrição</th>
                     <th>Valor</th>
+                    <th>imagens</th>
                     <th>Cat</th>
-                    <th>Destaque</th>
-                    <th>Recomendado</th>
+                    <th>Dest</th>
+                    <th>Rec</th>
                     <th>Criado Em:</th>
                     <th>Atualizado Em:</th>
                 </tr>
@@ -27,6 +28,7 @@
                     <td>{{ $products_id->name }}</td>
                     <td>{{ $products_id->description }}</td>
                     <td>{{ $products_id->price }}</td>
+                    <td><a href="{{ route('products_image',['id'=>$products_id->id]) }}" title="Imagem">Imagens</a></td>
                     <td><a href="{{ route('categories_show',['id'=>$products_id->category_id]) }}" title="Categoria" >{{ $products_id->category->name }}</a></td>
                     <td>{{ $products_id->featured }}</td>
                     <td>{{ $products_id->recommend }}</td>

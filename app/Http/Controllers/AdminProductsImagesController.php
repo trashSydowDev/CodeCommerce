@@ -56,9 +56,9 @@ class AdminProductsImagesController extends Controller
      */
     public function create($id)
     {
-        $image = $this->productImage->find($id);
+        $product = $this->products->find($id);
 
-        return view('products.images.create', compact('image'));
+        return view('products.images.create', compact('product'));
     }
 
 
@@ -83,7 +83,7 @@ class AdminProductsImagesController extends Controller
 
         $storage::disk('local_public')->put($image->id . '.' . $extension, File::get($file));
 
-        return redirect()->route('products_image_show', ['id' => $id]);
+        return redirect()->route('products_image', ['id' => $id]);
     }
 
     public function delete($id, Storage $storage)
