@@ -71,3 +71,15 @@ Também, você deverá implementar a paginação em todos os CRUDs.
 OBS: Não se esqueça de checar se suas rotas estão seguindo o mesmo padrão que estou utilizando.
 
 Boa sorte!
+
+
+
+***************************************************************************************
+*************************6º Etapa. Upload de Imagens
+***************************************************************************************
+
+Essa etapa é bastante simples.
+
+Você simplesmente precisa repetir exatamente o processo de cadastro de imagens de produtos com upload.
+
+Por outro lado, gostaria que você também testasse o processo de upload utilizando a Amazon S3. Ok?
