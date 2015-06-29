@@ -36,6 +36,7 @@
                                     <td><a href="{{ route('categories_show',['id'=>$product->category->id]) }}" title="Categoria" >{{ $product->category->name }}</a></td>
                                     <td>{{ $product->featured }}</td>
                                     <td>{{ $product->recommend }}</td>
+                                    <td><a href="{{ route('products_image_show',['id'=>$product->id]) }}" title="Imagem" class="btn btn-info" >Imagem</a></td>
                                     <td><a href="{{ route('products_show',['id'=>$product->id]) }}" title="Visualizar" class="btn btn-success" >Visualizar</a></td>
                                     <td><a href="{{ route('products_api_show',['id'=>$product->id]) }}" title="api" class="btn btn-default" >API</a></td>
                                     <td><a href="{{ route('products_edit',['id'=>$product->id]) }}" title="editar" class="btn btn-info" >Editar</a></td>

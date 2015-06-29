@@ -63,6 +63,7 @@ Route::group(['prefix' => 'admin'], function(){
 
         get('/create',['as'=>'products_create','uses'=>'AdminProductsController@create']);
 
+        // products/{id}
         Route::group(['prefix' => '{id}'], function(){
 
             get('/', ['as'=>'products_show','uses'=>'AdminProductsController@show']);
@@ -73,16 +74,38 @@ Route::group(['prefix' => 'admin'], function(){
 
             put('/update',['as'=>'products_update','uses'=>'AdminProductsController@update']);
 
+            // products/{id}/image
+            Route::group(['prefix' => 'image'], function(){
+
+                get('/', ['as'=>'products_image','uses'=>'AdminProductsImagesController@index']);
+
+                get('/show', ['as'=>'products_image_show','uses'=>'AdminProductsImagesController@show']);
+
+                get('/create', ['as'=>'products_image_create','uses'=>'AdminProductsImagesController@create']);
+
+                post('/store', ['as'=>'products_image_store','uses'=>'AdminProductsImagesController@store']);
+
+                get('/delete', ['as'=>'products_image_delete','uses'=>'AdminProductsImagesController@delete']);
+
+            });
+
         });
 
-        get('/api/', ['as' => 'products_api',   function(Product $products) {
-            return $products->all();
-        }]);
 
-        // PRODUTOS API
-        get('/api/{products}', ['as' => 'products_api_show',  function(Product $products, $id) {
-            return $products->find($id);
-        }]);
+
+        // products/api
+        Route::group(['prefix' => 'api'], function(){
+
+            get('/', ['as' => 'products_api',   function(Product $products) {
+                return $products->all();
+            }]);
+
+
+            get('/{products}', ['as' => 'products_api_show',  function(Product $products, $id) {
+                return $products->find($id);
+            }]);
+
+        });
 
     });
 
