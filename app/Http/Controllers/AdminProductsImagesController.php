@@ -86,7 +86,7 @@ class AdminProductsImagesController extends Controller
         return redirect()->route('products_image', ['id' => $id]);
     }
 
-    public function delete($id, Storage $storage)
+    public function destroy($id, Storage $storage)
     {
         $image = $this->productImage->find($id);
 

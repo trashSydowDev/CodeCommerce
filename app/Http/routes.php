@@ -72,7 +72,7 @@ Route::group(['prefix' => 'admin'], function(){
 
             get('/', ['as'=>'products_show','uses'=>'AdminProductsController@show']);
 
-            get('/delete',['as'=>'products_delete','uses'=>'AdminProductsController@delete']);
+            get('/delete',['as'=>'products_delete','uses'=>'AdminProductsController@destroy']);
 
             get('/edit',['as'=>'products_edit','uses'=>'AdminProductsController@edit']);
 
@@ -87,7 +87,7 @@ Route::group(['prefix' => 'admin'], function(){
 
                 post('/store', ['as'=>'products_image_store','uses'=>'AdminProductsImagesController@store']);
 
-                get('/delete', ['as'=>'products_image_delete','uses'=>'AdminProductsImagesController@delete']);
+                get('/delete', ['as'=>'products_image_delete','uses'=>'AdminProductsImagesController@destroy']);
 
             });
 

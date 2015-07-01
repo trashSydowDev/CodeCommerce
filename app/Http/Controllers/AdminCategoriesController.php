@@ -98,14 +98,19 @@ class AdminCategoriesController extends Controller
     }
 
     /**
-     * Delete Categories
+     * Delete Categories and products related
      *
      * @param $id
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function delete($id)
     {
-        $this->categories->find($id)->delete();
+        $category = $this->categories->find($id);
+
+        foreach($category->products as $prod) {
+            $prod->delete();
+        }
+        $category->delete();
 
         return redirect()->route('categories');
     }

@@ -5,6 +5,7 @@ namespace CodeCommerce\Http\Controllers;
 use CodeCommerce\Category;
 use CodeCommerce\Http\Requests\ProductsRequest;
 use CodeCommerce\Product;
+use Illuminate\Support\Facades\Storage;
 
 class AdminProductsController extends Controller
 {
@@ -118,14 +119,22 @@ class AdminProductsController extends Controller
     }
 
     /**
-     * Delete Products
+     * Delete Products and images related
      *
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function delete($id)
+    public function destroy($id)
     {
-        $this->products->find($id)->delete();
+        $product = $this->products->find($id);
+
+        foreach($product->images as $image) {
+            if (file_exists(public_path() . '/uploads/products/' . $image->id . '.' . $image->extension)) {
+                Storage::disk('local_public')->delete($image->id . '.' . $image->extension);
+            }
+            $image->delete();
+        }
+        $product->delete();
 
         return redirect()->route('products');
     }
