@@ -24,6 +24,6 @@
         "jquery" : "latest",
         "animate.css" : "latest",
         "html5shiv" : "latest",
-        "jquery.easing" : "latest"
+        "jquery.easing" : "latest",
       }
 }
