@@ -43,6 +43,9 @@
                 {!! Form::hidden('recommend', 0) !!}
                 {!! Form::checkbox('recommend') !!}
 
+                {!! Form::label('tags', 'Tags:') !!}
+                {!! Form::textarea('tags', null, ['placeholder' => 'Tags do produto']) !!}
+
                 {!! Form::submit('Adicionar Produto', ['class' => 'btn btn-success']) !!}
 
             {!! Form::close() !!}

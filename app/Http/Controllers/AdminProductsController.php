@@ -5,19 +5,23 @@ namespace CodeCommerce\Http\Controllers;
 use CodeCommerce\Category;
 use CodeCommerce\Http\Requests\ProductsRequest;
 use CodeCommerce\Product;
+use CodeCommerce\Tag;
 use Illuminate\Support\Facades\Storage;
 
 class AdminProductsController extends Controller
 {
     private $products;
 
+    private $tags;
+
     /**
      * Construct
      */
-    public function  __construct(Product $products)
+    public function  __construct(Product $products, Tag $tags)
     {
         $this->middleware('guest');
         $this->products = $products;
+        $this->tags = $tags;
     }
 
     /**
@@ -81,11 +85,35 @@ class AdminProductsController extends Controller
     {
         $data = $request->all();
 
-        $category = $this->products->fill($data);
+        $product = $this->products->fill($data);
+        $product->save();
 
-        $category->save();
+        $tags = $this->getTags($request->input('tags'));
+
+        $product->tags()->sync($tags);
 
         return redirect()->route('products');
+    }
+
+    /**
+     * Get tags to get the id
+     *
+     * @param $tags
+     * @return array
+     */
+    private function getTags($tags)
+    {
+        $datas = explode(',', $tags);
+
+        foreach ($datas as $tag) {
+
+            $this->tags->firstOrCreate(['name' => $tag]);
+
+            $tagId[] = $this->tags->where('name','=', $tag)->first()->id;
+
+        }
+
+        return $tagId;
     }
 
     /**
@@ -114,6 +142,11 @@ class AdminProductsController extends Controller
     public function update(ProductsRequest $request, $id)
     {
         $this->products->find($id)->update($request->all());
+
+        $tags = $this->getTags($request->input('tags'));
+
+        $product = $this->products->find($id);
+        $product->tags()->sync($tags);
 
         return redirect()->route('products');
     }

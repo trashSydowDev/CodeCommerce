@@ -43,6 +43,9 @@
                 {!! Form::hidden('recommend', 0) !!}
                 {!! Form::checkbox('recommend', 1, $products_id->recommend) !!}
 
+                {!! Form::label('tags', 'Tags:') !!}
+                {!! Form::textarea('tags', $products_id->tag_list, ['placeholder' => 'Tags do produto']) !!}
+
                 {!! Form::submit('Atualizar', ['class' => 'btn btn-success']) !!}
 
             {!! Form::close() !!}
