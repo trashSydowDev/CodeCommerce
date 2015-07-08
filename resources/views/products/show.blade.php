@@ -41,6 +41,16 @@
             <a href="{{ route('products_edit',['id'=>$products_id->id]) }}" title="editar" class="btn btn-info" >Editar</a>
             <a href="{{ route('products_delete',['id'=>$products_id->id]) }}" title="delete" class="btn btn-danger" >Delete</a>
         </article>
+
+        <aside>
+            <h1>Tags Relacionadas</h1>
+
+            <ul>
+
+                <li>{{ $products_id->tag_list }}</li>
+
+            </ul>
+        </aside>
     </div>
 </section>
 @stop
