@@ -4,18 +4,24 @@ namespace CodeCommerce\Http\Controllers;
 
 use CodeCommerce\Http\Requests\CategoryRequest;
 use CodeCommerce\Repositories\AdminCategoriesRepository;
+use CodeCommerce\Services\AdminCategoriesService;
 
 class AdminCategoriesController extends Controller
 {
     private $categoriesRepository;
+    private $categoriesServices;
 
     /**
      * Construct
+     *
+     * @param AdminCategoriesRepository $categoriesRepository
+     * @param AdminCategoriesService $categoriesServices
      */
-    public function __construct(AdminCategoriesRepository $categoriesRepository)
+    public function __construct(AdminCategoriesRepository $categoriesRepository, AdminCategoriesService $categoriesServices)
     {
         $this->middleware('guest');
         $this->categoriesRepository = $categoriesRepository;
+        $this->categoriesServices = $categoriesServices;
     }
 
     /**
@@ -48,9 +54,7 @@ class AdminCategoriesController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        $data = $request->all();
-
-        $this->categoriesRepository->create($data);
+        $this->categoriesServices->insert($request);
 
         return redirect()->route('categories');
     }
@@ -101,14 +105,9 @@ class AdminCategoriesController extends Controller
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function delete($id)
+    public function destroy($id)
     {
-        $category = $this->categoriesRepository->find($id);
-
-        foreach($category->products as $prod) {
-            $prod->delete();
-        }
-        $category->delete();
+        $this->categoriesServices->delete($id);
 
         return redirect()->route('categories');
     }

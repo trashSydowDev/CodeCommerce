@@ -3,26 +3,34 @@
 namespace CodeCommerce\Http\Controllers;
 
 use CodeCommerce\Http\Requests\ProductsImagesRequest;
-
 use CodeCommerce\Repositories\AdminProductsImagesRepository;
 use CodeCommerce\Repositories\AdminProductsRepository;
-
-use Illuminate\Support\Facades\File;
+use CodeCommerce\Services\AdminProductsImagesService;
 use Illuminate\Support\Facades\Storage;
 
+/**
+ * Class AdminProductsImagesController
+ * @package CodeCommerce\Http\Controllers
+ */
 class AdminProductsImagesController extends Controller
 {
     private $productsRepository;
     private $productImageRepository;
+    private $productsImagesService;
 
     /**
      * Construct
+     *
+     * @param AdminProductsRepository $productsRepository
+     * @param AdminProductsImagesRepository $productsImagesRepository
+     * @param AdminProductsImagesService $productsImagesService
      */
-    public function  __construct(AdminProductsRepository $productsRepository, AdminProductsImagesRepository $productsImagesRepository)
+    public function  __construct(AdminProductsRepository $productsRepository, AdminProductsImagesRepository $productsImagesRepository, AdminProductsImagesService $productsImagesService)
     {
         $this->middleware('guest');
         $this->productsRepository = $productsRepository;
         $this->productImageRepository = $productsImagesRepository;
+        $this->productsImagesService = $productsImagesService;
     }
 
     /**
@@ -63,7 +71,6 @@ class AdminProductsImagesController extends Controller
         return view('products.images.create', compact('product'));
     }
 
-
     /**
      * Upload image
      *
@@ -74,32 +81,22 @@ class AdminProductsImagesController extends Controller
      */
     public function store(ProductsImagesRequest $request, $id, Storage $storage)
     {
-        $file = $request->file('image');
-
-        $extension = $file->getClientOriginalExtension();
-
-        $image  = $this->productImageRepository->create([
-            'product_id' => $id,
-            'extension' => $extension
-        ]);
-
-        $storage::disk('local_public')->put($image->id . '.' . $extension, File::get($file));
+        $this->productsImagesService->upload($request, $id, $storage);
 
         return redirect()->route('products_image', ['id' => $id]);
     }
 
+    /**
+     * Delete image
+     *
+     * @param $id
+     * @param Storage $storage
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id, Storage $storage)
     {
-        $image = $this->productImageRepository->find($id);
+        $products = $this->productsImagesService->delete($id, $storage);
 
-        if (file_exists(public_path() . '/uploads/products/' . $image->id . '.' . $image->extension)) {
-            $storage::disk('local_public')->delete($image->id . '.' . $image->extension);
-        }
-
-        $product = $image->product;
-
-        $image->delete();
-
-        return redirect()->route('products_image', ['id' => $product->id]);
+        return redirect()->route('products_image', ['id' => $products->id]);
     }
 }

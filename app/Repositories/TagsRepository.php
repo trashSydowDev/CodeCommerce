@@ -2,7 +2,6 @@
 
 namespace CodeCommerce\Repositories;
 
-use Bosnadev\Repositories\Contracts\RepositoryInterface;
 use Bosnadev\Repositories\Eloquent\Repository;
 
 class TagsRepository extends Repository

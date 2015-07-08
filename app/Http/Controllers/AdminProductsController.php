@@ -5,30 +5,31 @@ namespace CodeCommerce\Http\Controllers;
 use CodeCommerce\Http\Requests\ProductsRequest;
 use CodeCommerce\Repositories\AdminCategoriesRepository;
 use CodeCommerce\Repositories\AdminProductsRepository;
-use CodeCommerce\Repositories\TagsRepository;
-use CodeCommerce\Tag;
-use Illuminate\Support\Facades\Storage;
+use CodeCommerce\Services\AdminProductsService;
 
 class AdminProductsController extends Controller
 {
     private $productsRepository;
 
-    private $tags;
+    private $productsServices;
 
     /**
      * Construct
+     *
+     * @param AdminProductsRepository $productsRepository
+     * @param AdminProductsService $productsServices
      */
-    public function  __construct(AdminProductsRepository $productsRepository, Tag $tags)
+    public function  __construct(AdminProductsRepository $productsRepository, AdminProductsService $productsServices)
     {
         $this->middleware('guest');
         $this->productsRepository = $productsRepository;
-        $this->tags = $tags;
+        $this->productsServices = $productsServices;
     }
 
     /**
      * Show products all.
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
@@ -84,34 +85,9 @@ class AdminProductsController extends Controller
      */
     public function store(ProductsRequest $request)
     {
-        $data = $request->all();
-
-        $product = $this->productsRepository->create($data);
-
-        $tags = $this->getTags($request->input('tags'));
-
-        $product->tags()->sync($tags);
+        $this->productsServices->insert($request);
 
         return redirect()->route('products');
-    }
-
-    /**
-     * Get tags to get the id
-     *
-     * @param $tags
-     * @return array
-     */
-    private function getTags($tags)
-    {
-        $datas = explode(',', $tags);
-
-        foreach ($datas as $tag) {
-
-            $tagId[] = $this->tags->firstOrCreate(['name' => $tag])->id;
-
-        }
-
-        return $tagId;
     }
 
     /**
@@ -121,7 +97,7 @@ class AdminProductsController extends Controller
      * @param $id
      * @return \Illuminate\View\View
      */
-    public function edit(AdminCategoriesRepository $categoryRepository, $id )
+    public function edit(AdminCategoriesRepository $categoryRepository, $id)
     {
         $categories = $categoryRepository->lists('name', 'id');
 
@@ -141,10 +117,7 @@ class AdminProductsController extends Controller
     {
         $this->productsRepository->find($id)->update($request->all());
 
-        $tags = $this->getTags($request->input('tags'));
-
-        $product = $this->productsRepository->find($id);
-        $product->tags()->sync($tags);
+        $this->productsServices->update($request, $id);
 
         return redirect()->route('products');
     }
@@ -157,15 +130,7 @@ class AdminProductsController extends Controller
      */
     public function destroy($id)
     {
-        $product = $this->productsRepository->find($id);
-
-        foreach($product->images as $image) {
-            if (file_exists(public_path() . '/uploads/products/' . $image->id . '.' . $image->extension)) {
-                Storage::disk('local_public')->delete($image->id . '.' . $image->extension);
-            }
-            $image->delete();
-        }
-        $product->delete();
+        $this->productsServices->delete($id);
 
         return redirect()->route('products');
     }
