@@ -3,24 +3,26 @@
 namespace CodeCommerce\Http\Controllers;
 
 use CodeCommerce\Http\Requests\ProductsImagesRequest;
-use CodeCommerce\ProductImage;
+
+use CodeCommerce\Repositories\AdminProductsImagesRepository;
+use CodeCommerce\Repositories\AdminProductsRepository;
+
 use Illuminate\Support\Facades\File;
-use CodeCommerce\Product;
 use Illuminate\Support\Facades\Storage;
 
 class AdminProductsImagesController extends Controller
 {
-    private $products;
-    private $productImage;
+    private $productsRepository;
+    private $productImageRepository;
 
     /**
      * Construct
      */
-    public function  __construct(Product $products, ProductImage $productImage)
+    public function  __construct(AdminProductsRepository $productsRepository, AdminProductsImagesRepository $productsImagesRepository)
     {
         $this->middleware('guest');
-        $this->products = $products;
-        $this->productImage = $productImage;
+        $this->productsRepository = $productsRepository;
+        $this->productImageRepository = $productsImagesRepository;
     }
 
     /**
@@ -30,7 +32,7 @@ class AdminProductsImagesController extends Controller
      */
     public function index()
     {
-        $images = $this->productImage->all();
+        $images = $this->productImageRepository->all();
 
         return view('products.images.index', compact('images'));
     }
@@ -43,7 +45,7 @@ class AdminProductsImagesController extends Controller
      */
     public function show($id)
     {
-        $image = $this->productImage->find($id);
+        $image = $this->productImageRepository->find($id);
 
         return view('products.images.show', compact('image'));
     }
@@ -56,7 +58,7 @@ class AdminProductsImagesController extends Controller
      */
     public function create($id)
     {
-        $product = $this->products->find($id);
+        $product = $this->productsRepository->find($id);
 
         return view('products.images.create', compact('product'));
     }
@@ -76,7 +78,7 @@ class AdminProductsImagesController extends Controller
 
         $extension = $file->getClientOriginalExtension();
 
-        $image  = $this->productImage->create([
+        $image  = $this->productImageRepository->create([
             'product_id' => $id,
             'extension' => $extension
         ]);
@@ -88,7 +90,7 @@ class AdminProductsImagesController extends Controller
 
     public function destroy($id, Storage $storage)
     {
-        $image = $this->productImage->find($id);
+        $image = $this->productImageRepository->find($id);
 
         if (file_exists(public_path() . '/uploads/products/' . $image->id . '.' . $image->extension)) {
             $storage::disk('local_public')->delete($image->id . '.' . $image->extension);

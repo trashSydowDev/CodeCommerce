@@ -2,20 +2,20 @@
 
 namespace CodeCommerce\Http\Controllers;
 
-use CodeCommerce\Category;
 use CodeCommerce\Http\Requests\CategoryRequest;
+use CodeCommerce\Repositories\AdminCategoriesRepository;
 
 class AdminCategoriesController extends Controller
 {
-    private $categories;
+    private $categoriesRepository;
 
     /**
      * Construct
      */
-    public function __construct(Category $category)
+    public function __construct(AdminCategoriesRepository $categoriesRepository)
     {
         $this->middleware('guest');
-        $this->categories = $category;
+        $this->categoriesRepository = $categoriesRepository;
     }
 
     /**
@@ -25,7 +25,7 @@ class AdminCategoriesController extends Controller
      */
     public function index()
     {
-        $categories = $this->categories->paginate(10);
+        $categories = $this->categoriesRepository->paginate(10);
 
         return view('categories.index', compact('categories'));
     }
@@ -50,9 +50,7 @@ class AdminCategoriesController extends Controller
     {
         $data = $request->all();
 
-        $category = $this->categories->fill($data);
-
-        $category->save();
+        $this->categoriesRepository->create($data);
 
         return redirect()->route('categories');
     }
@@ -65,7 +63,7 @@ class AdminCategoriesController extends Controller
      */
     public function show($id)
     {
-        $categories_id = $this->categories->find($id);
+        $categories_id = $this->categoriesRepository->find($id);
 
         return view('categories.show', compact('categories_id'));
     }
@@ -78,7 +76,7 @@ class AdminCategoriesController extends Controller
      */
     public function edit($id)
     {
-        $categories_id = $this->categories->find($id);
+        $categories_id = $this->categoriesRepository->find($id);
 
         return view('categories.edit', compact('categories_id'));
     }
@@ -92,7 +90,7 @@ class AdminCategoriesController extends Controller
      */
     public function update(CategoryRequest $request, $id)
     {
-        $this->categories->find($id)->update($request->all());
+        $this->categoriesRepository->find($id)->update($request->all());
 
         return redirect()->route('categories');
     }
@@ -105,7 +103,7 @@ class AdminCategoriesController extends Controller
      */
     public function delete($id)
     {
-        $category = $this->categories->find($id);
+        $category = $this->categoriesRepository->find($id);
 
         foreach($category->products as $prod) {
             $prod->delete();

@@ -2,25 +2,26 @@
 
 namespace CodeCommerce\Http\Controllers;
 
-use CodeCommerce\Category;
 use CodeCommerce\Http\Requests\ProductsRequest;
-use CodeCommerce\Product;
+use CodeCommerce\Repositories\AdminCategoriesRepository;
+use CodeCommerce\Repositories\AdminProductsRepository;
+use CodeCommerce\Repositories\TagsRepository;
 use CodeCommerce\Tag;
 use Illuminate\Support\Facades\Storage;
 
 class AdminProductsController extends Controller
 {
-    private $products;
+    private $productsRepository;
 
     private $tags;
 
     /**
      * Construct
      */
-    public function  __construct(Product $products, Tag $tags)
+    public function  __construct(AdminProductsRepository $productsRepository, Tag $tags)
     {
         $this->middleware('guest');
-        $this->products = $products;
+        $this->productsRepository = $productsRepository;
         $this->tags = $tags;
     }
 
@@ -31,7 +32,7 @@ class AdminProductsController extends Controller
      */
     public function index()
     {
-        $products = $this->products->paginate(10);
+        $products = $this->productsRepository->paginate(10);
 
         return view('products.index', compact('products'));
     }
@@ -44,7 +45,7 @@ class AdminProductsController extends Controller
      */
     public function show($id)
     {
-        $products_id = $this->products->find($id);
+        $products_id = $this->productsRepository->find($id);
 
         return view('products.show', compact('products_id'));
     }
@@ -57,7 +58,7 @@ class AdminProductsController extends Controller
      */
     public function showImages($id)
     {
-        $product = $this->products->find($id);
+        $product = $this->productsRepository->find($id);
 
         return view('products.images', compact('product'));
     }
@@ -65,12 +66,12 @@ class AdminProductsController extends Controller
     /**
      * Create products.
      *
-     * @param Category $category
+     * @param AdminCategoriesRepository $categoryRepository
      * @return \Illuminate\View\View
      */
-    public function create(Category $category)
+    public function create(AdminCategoriesRepository $categoryRepository)
     {
-        $categories = $category->lists('name', 'id');
+        $categories = $categoryRepository->lists('name', 'id');
 
         return view('products.create', compact('categories'));
     }
@@ -85,8 +86,7 @@ class AdminProductsController extends Controller
     {
         $data = $request->all();
 
-        $product = $this->products->fill($data);
-        $product->save();
+        $product = $this->productsRepository->create($data);
 
         $tags = $this->getTags($request->input('tags'));
 
@@ -107,9 +107,7 @@ class AdminProductsController extends Controller
 
         foreach ($datas as $tag) {
 
-            $this->tags->firstOrCreate(['name' => $tag]);
-
-            $tagId[] = $this->tags->where('name','=', $tag)->first()->id;
+            $tagId[] = $this->tags->firstOrCreate(['name' => $tag])->id;
 
         }
 
@@ -119,15 +117,15 @@ class AdminProductsController extends Controller
     /**
      * Edit Products
      *
-     * @param Category $category
+     * @param AdminCategoriesRepository $categoryRepository
      * @param $id
      * @return \Illuminate\View\View
      */
-    public function edit(Category $category, $id )
+    public function edit(AdminCategoriesRepository $categoryRepository, $id )
     {
-        $categories = $category->lists('name', 'id');
+        $categories = $categoryRepository->lists('name', 'id');
 
-        $products_id = $this->products->find($id);
+        $products_id = $this->productsRepository->find($id);
 
         return view('products.edit', compact('products_id', 'categories'));
     }
@@ -141,11 +139,11 @@ class AdminProductsController extends Controller
      */
     public function update(ProductsRequest $request, $id)
     {
-        $this->products->find($id)->update($request->all());
+        $this->productsRepository->find($id)->update($request->all());
 
         $tags = $this->getTags($request->input('tags'));
 
-        $product = $this->products->find($id);
+        $product = $this->productsRepository->find($id);
         $product->tags()->sync($tags);
 
         return redirect()->route('products');
@@ -159,7 +157,7 @@ class AdminProductsController extends Controller
      */
     public function destroy($id)
     {
-        $product = $this->products->find($id);
+        $product = $this->productsRepository->find($id);
 
         foreach($product->images as $image) {
             if (file_exists(public_path() . '/uploads/products/' . $image->id . '.' . $image->extension)) {
