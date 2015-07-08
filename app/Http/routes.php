@@ -13,9 +13,8 @@ use CodeCommerce\Product;
 | and give it the controller to call when that URI is requested.
 |
 */
-get('/', ['as' => 'index', function () {
-    return view('welcome');
-}]);
+
+get('/', ['as' => 'index', 'uses' => 'StoreController@index']);
 
 Route::group(['prefix' => 'admin'], function(){
 
@@ -92,8 +91,6 @@ Route::group(['prefix' => 'admin'], function(){
             });
 
         });
-
-
 
         // products/api
         Route::group(['prefix' => 'api'], function(){

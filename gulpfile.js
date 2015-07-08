@@ -6,7 +6,7 @@ var elixir = require('laravel-elixir'),
 elixir(function(mix) {
     mix.stylus();
 
-    mix.version("css/main.css");
+    mix.version("css/mainadmin.css");
 
     gulp.task('serve', function() {
 
