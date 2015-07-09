@@ -83,3 +83,25 @@ Essa etapa é bastante simples.
 Você simplesmente precisa repetir exatamente o processo de cadastro de imagens de produtos com upload.
 
 Por outro lado, gostaria que você também testasse o processo de upload utilizando a Amazon S3. Ok?
+
+
+***************************************************************************************
+*************************7º Etapa. Tags
+***************************************************************************************
+
+Agora que você já aprendeu a trabalhar com relacionamentos ManyToMany, adicione ao formulário de
+Criação / Edicação de produtos, a opção de setar tags para determinado produto em um textarea (entre vírgulas).
+
+Obs.: Uma tag já adicionada na tabela de tags não pode ter o registro repetido, ou seja, não pode
+ter duas categorias "notebooks" na tabela tags.
+
+***************************************************************************************
+*************************8º Etapa. Loja
+***************************************************************************************
+
+Agora que você já possui a base para gerar a home da Loja, você precisa:
+
+- Listar os produtos em desta
+- Listar os produtos recomendados
+
+Quando clicarmos em um item da categoria, deveremos exibir apenas os produtos de uma determinada categoria.

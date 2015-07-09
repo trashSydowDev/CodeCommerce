@@ -29,6 +29,10 @@ As descrições do projeto, etapa por etapa, vc encontra no arquivo projeto.txt
 
 >6º Etapa. *Upload de Imagens*
 
+>7º Etapa. *Tags*
+
+>8º Etapa. *Loja*
+
 **Uso**
 
 > - git clone https://github.com/candidosouza/CodeCommerce.git
