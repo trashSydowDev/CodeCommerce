@@ -13,12 +13,23 @@ use CodeCommerce\Product;
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::group(['prefix' => '/'], function(){
 
-get('/', ['as' => 'index', 'uses' => 'StoreController@index']);
+    Route::pattern('id', '[0-9]+');
+
+    get('/', ['as' => 'index', 'uses' => 'StoreController@index']);
+
+    get('category/{id}', ['as' => 'store_category', 'uses' => 'StoreController@category']);
+
+});
 
 Route::group(['prefix' => 'admin'], function(){
 
     Route::pattern('id', '[0-9]+');
+
+    get('/', ['as' => 'admin', function () {
+        return view('welcome');
+    }]);
 
     // CATEGORIAS
     Route::group(['prefix' => 'categories'], function(){

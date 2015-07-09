@@ -8,12 +8,12 @@
     <title>Home | E-Shop</title>
 
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/mainloja.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet">
+    <link href="{{ url('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url('css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ url('css/prettyPhoto.css') }}" rel="stylesheet">
+    <link href="{{ url('css/animate.css') }}" rel="stylesheet">
+    <link href="{{ url('css/mainloja.css') }}" rel="stylesheet">
+    <link href="{{ url('css/responsive.css') }}" rel="stylesheet">
 
 
 </head>
@@ -63,7 +63,7 @@
                                     Checkout</a></li>
                             <li><a href="http://commerce.dev:10088/cart"><i class="fa fa-shopping-cart"></i>
                                     Carrinho</a></li>
-                            <li><a href="http://commerce.dev:10088/auth/login"><i class="fa fa-lock"></i> Login</a></li>
+                            <li><a href="{{ route('admin') }}"><i class="fa fa-lock"></i> Login</a></li>
                         </ul>
                     </div>
                 </div>
@@ -153,11 +153,11 @@
 <!--/Footer-->
 
 
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.scrollUp.min.js"></script>
-<script src="js/jquery.prettyPhoto.js"></script>
-<script src="js/main.js"></script>
+<script src="{{ url('js/jquery.js') }}"></script>
+<script src="{{ url('js/bootstrap.min.js') }}"></script>
+<script src="{{ url('js/jquery.scrollUp.min.js') }}"></script>
+<script src="{{ url('js/jquery.prettyPhoto.js') }}"></script>
+<script src="{{ url('js/main.js') }}"></script>
 
 </body>
 </html>
