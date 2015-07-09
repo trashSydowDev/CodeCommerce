@@ -9,7 +9,7 @@
         <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300,500,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
 
-        <link rel="stylesheet" href="{{ elixir("css/mainadmin.css") }}">
+        <link href="{{ elixir('css/mainadmin.css') }}" rel="stylesheet">
         <!--[if lt IE 9]>
         <script src="bower_components/html5shiv/dist/html5shiv.min.js"></script>
         <![endif]-->
