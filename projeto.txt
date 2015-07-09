@@ -111,3 +111,12 @@ Quando clicarmos em um item da categoria, deveremos exibir apenas os produtos de
 ***************************************************************************************
 
 Repita exatamente o aprendido nesse capítulo para que você possa gerenciar seus assets utilizando o Elixir.
+
+***************************************************************************************
+*************************10º Etapa. Produtos com tags
+***************************************************************************************
+
+Nessa fase do projeto, você deverá repetir exatamente o que você aprendeu nessa capitulo.
+Também deverá exibir as tags de um determinado produto, no momento da exibição do mesmo na loja.
+Cada tag deverá ter um link que, quando clicado deverá encaminhar o usuário para a página onde temos a listagem
+de todos os produtos associados a tag correspondente.
