@@ -34,9 +34,9 @@
                     </div>
                     <div class="product-overlay">
                         <div class="overlay-content">
-                            <h2>R$ 77</h2>
+                            <h2>R$ {{ $product->price }}</h2>
 
-                            <p>nome</p>
+                            <p>{{ $product->name }}</p>
                             <a href="http://commerce.dev:10088/product/4" class="btn btn-default add-to-cart"><i
                                     class="fa fa-crosshairs"></i>Mais detalhes</a>
 
