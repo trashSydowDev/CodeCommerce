@@ -21,6 +21,10 @@ Route::group(['prefix' => '/'], function(){
 
     get('category/{id}', ['as' => 'store_category', 'uses' => 'StoreController@category']);
 
+    get('product/{id}', ['as' => 'store_product', 'uses' => 'StoreController@product']);
+
+    get('tag/{id}', ['as' => 'store_tag', 'uses' => 'StoreController@tags']);
+
 });
 
 Route::group(['prefix' => 'admin'], function(){

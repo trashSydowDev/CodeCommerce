@@ -77,23 +77,4 @@ class AdminProductsService
 
         $product->delete();
     }
-
-    /**
-     * Get tags to get the id
-     *
-     * @param $tags
-     * @return array
-     */
-    private function getTags($tags)
-    {
-        $datas = explode(',', $tags);
-
-        foreach ($datas as $tag) {
-
-            $tagId[] = $this->tags->firstOrCreate(['name' => $tag])->id;
-
-        }
-
-        return $tagId;
-    }
 }

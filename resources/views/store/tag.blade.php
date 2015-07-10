@@ -6,9 +6,9 @@
 
 @section('content')
     <div class="features_items"><!--recommended-->
-        <h2 class="title text-center">Categoria {{ $category->name }}</h2>
+        <h2 class="title text-center">Produtos Relacionados a {{ $tag->name }}</h2>
 
-        @include('store.partial.product', [])
+        @include('store.partial.product', ['products' => $tag->products])
 
     </div>
     <!--recommended-->

@@ -46,8 +46,9 @@
             <h1>Tags Relacionadas</h1>
 
             <ul>
-
-                <li>{{ $products_id->tag_list }}</li>
+                @foreach($products_id->tags as $tag)
+                <li><a href="{{ route('store_tag', ['id' => $tag->id]) }}" title="" >{{ $tag->name }}</a></li>
+                @endforeach
 
             </ul>
         </aside>
