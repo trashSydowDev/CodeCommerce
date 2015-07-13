@@ -18,6 +18,18 @@ class CartRequest extends Request
     }
 
     /**
+     * {@inheritdoc}
+     */
+    protected function formatErrors(Validator $validator)
+    {
+        $messages = [
+            'required' => 'Por favor Apenas números!',
+        ];
+
+        return $validator->errors()->all($messages);
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
@@ -25,7 +37,7 @@ class CartRequest extends Request
     public function rules()
     {
         return [
-            'qtd'=>'required'
+            'qtd'=>'required|integer'
         ];
     }
 }

@@ -69,6 +69,10 @@ class CartController extends Controller
 
         $cart->update($id, $product->name, $product->price, $data['qtd']);
 
+        if ($data['qtd'] == 0) {
+            $cart->remove($id);
+        }
+
         $session::set('cart', $cart);
 
         return redirect()->route('cart');
