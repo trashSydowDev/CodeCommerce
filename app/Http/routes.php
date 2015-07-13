@@ -25,6 +25,10 @@ Route::group(['prefix' => '/'], function(){
 
     get('tag/{id}', ['as' => 'store_tag', 'uses' => 'StoreController@tags']);
 
+    get('cart', ['as' => 'cart', 'uses' => 'CartController@index']);
+
+    get('cart/add/{id}', ['as' => 'cart_add', 'uses' => 'CartController@add']);
+
 });
 
 Route::group(['prefix' => 'admin'], function(){
