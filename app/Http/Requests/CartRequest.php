@@ -23,7 +23,7 @@ class CartRequest extends Request
     protected function formatErrors(Validator $validator)
     {
         $messages = [
-            'required' => 'Por favor Apenas números!',
+            'required' => 'Por favor insira uma quantidade numérica!',
         ];
 
         return $validator->errors()->all($messages);
