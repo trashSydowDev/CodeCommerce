@@ -37,11 +37,11 @@
 
                     <td class="cart_quantity">
 
-                        {!! Form::open( ['method' => 'post', 'class' => 'form-inline']) !!}
+                        {!! Form::open(['route' => ['cart_update', 'id' => $k], 'method' => 'post', 'class' => 'form-inline']) !!}
                         <div class="form-group">
                             {!! Form::text('qtd', $item['qtd'], ['class' => 'form-control']) !!}
                         </div>
-                        {!! Form::submit('Update Qtd', ['class' => 'btn btn-success']) !!}
+                        {!! Form::submit('Alterar Qtd', ['class' => 'btn btn-success']) !!}
                         {!! Form::close() !!}
 
                     </td>
@@ -50,7 +50,7 @@
                     </td>
 
                     <td class="">
-                        <a href="" class="btn btn-danger">Delete</a>
+                        <a href="{{ route('cart_delete', ['id' => $k]) }}" class="btn btn-danger">Delete</a>
                     </td>
 
                 </tr>
@@ -67,9 +67,9 @@
                     <td colspan="6">
                         <div class="pull-right">
                                 <span>
-                                    Total: R$ {{ $cart->getTotal() }}
+                                    TOTAL: R$ {{ $cart->getTotal() }}
                                 </span>
-                            <a href="" class="btn btn-success">Checkout</a>
+                            <a href="" class="btn btn-success">Comprar</a>
                         </div>
                     </td>
                 </tr>

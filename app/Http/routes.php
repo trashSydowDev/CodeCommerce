@@ -25,9 +25,17 @@ Route::group(['prefix' => '/'], function(){
 
     get('tag/{id}', ['as' => 'store_tag', 'uses' => 'StoreController@tags']);
 
-    get('cart', ['as' => 'cart', 'uses' => 'CartController@index']);
+    Route::group(['prefix' => 'cart'], function(){
 
-    get('cart/add/{id}', ['as' => 'cart_add', 'uses' => 'CartController@add']);
+        get('/', ['as' => 'cart', 'uses' => 'CartController@index']);
+
+        get('add/{id}', ['as' => 'cart_add', 'uses' => 'CartController@add']);
+
+        get('delete/{id}', ['as' => 'cart_delete', 'uses' => 'CartController@destroy']);
+
+        post('update/{id}', ['as' => 'cart_update', 'uses' => 'CartController@update']);
+
+    });
 
 });
 
