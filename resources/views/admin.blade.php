@@ -24,7 +24,8 @@
                         <a href="{{ route('index') }}" title="Home" >Home</a> |
                         <a href="{{ route('categories') }}" title="Categorias" >Categorias</a> |
                         <a href="{{ route('products') }}" title="Produtos" >Produtos</a> |
-                        <a href="{{ route('products_image_index') }}" title="Produtos" >Imagens</a>
+                        <a href="{{ route('products_image_index') }}" title="Produtos" >Imagens</a> |
+                        <a href="{{ url('/auth/logout') }}" title="Deslogar" >Deslogar</a>
                         @yield('content')
                     </article>
                 </div>

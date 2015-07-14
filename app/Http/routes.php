@@ -49,7 +49,7 @@ Route::group(['prefix' => '/'], function(){
 
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth_admin'], function(){
 
     Route::pattern('id', '[0-9]+');
 

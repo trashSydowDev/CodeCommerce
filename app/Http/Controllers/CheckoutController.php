@@ -43,7 +43,7 @@ class CheckoutController extends Controller
 
             $cart->clear();
 
-            return view('store.checkout', compact('order'));
+            return view('store.checkout', compact('order', 'cart'));
         }
 
         return view('store.checkout',['cart' => 'empty']);
