@@ -25,6 +25,8 @@ Route::group(['prefix' => '/'], function(){
 
     get('tag/{id}', ['as' => 'store_tag', 'uses' => 'StoreController@tags']);
 
+    get('checkout/placeOrder', ['as' => 'checkout_place', 'uses' => 'CheckoutController@place']);
+
     Route::group(['prefix' => 'cart'], function(){
 
         get('/', ['as' => 'cart', 'uses' => 'CartController@index']);
