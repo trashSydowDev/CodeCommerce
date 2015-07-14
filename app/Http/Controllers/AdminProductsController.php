@@ -21,7 +21,6 @@ class AdminProductsController extends Controller
      */
     public function  __construct(AdminProductsRepository $productsRepository, AdminProductsService $productsServices)
     {
-        $this->middleware('auth');
         $this->productsRepository = $productsRepository;
         $this->productsServices = $productsServices;
     }
