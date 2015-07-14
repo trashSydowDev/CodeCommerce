@@ -13,6 +13,12 @@ use CodeCommerce\Product;
 | and give it the controller to call when that URI is requested.
 |
 */
+
+Route::controllers([
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
+]);
+
 Route::group(['prefix' => '/'], function(){
 
     Route::pattern('id', '[0-9]+');
