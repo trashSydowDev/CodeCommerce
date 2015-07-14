@@ -57,7 +57,7 @@
                                     Checkout</a></li>
                             <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-cart"></i>
                                     Carrinho</a></li>
-                            <li><a href="{{ route('admin') }}"><i class="fa fa-lock"></i> Login</a></li>
+                            <li><a href="{{ url('/auth/login') }}"><i class="fa fa-lock"></i> Login</a></li>
                         </ul>
                     </div>
                 </div>
