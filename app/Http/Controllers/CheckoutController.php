@@ -40,6 +40,12 @@ class CheckoutController extends Controller
                     'qtd' => $item['qtd']
                 ]);
             }
+
+            $cart->clear();
+
+            return view('store.checkout', compact('order'));
         }
+
+        return view('store.checkout',['cart' => 'empty']);
     }
 }

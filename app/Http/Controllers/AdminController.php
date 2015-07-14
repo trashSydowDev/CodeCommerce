@@ -2,10 +2,12 @@
 
 namespace CodeCommerce\Http\Controllers;
 
-use CodeCommerce\Category;
-
-class WelcomeController extends Controller
+class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Show the application welcome screen to the user.
      *
@@ -13,7 +15,6 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-
-        return view('welcome');
+        return view('admin');
     }
 } 

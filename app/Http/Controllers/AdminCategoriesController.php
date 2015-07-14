@@ -19,7 +19,7 @@ class AdminCategoriesController extends Controller
      */
     public function __construct(AdminCategoriesRepository $categoriesRepository, AdminCategoriesService $categoriesServices)
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
         $this->categoriesRepository = $categoriesRepository;
         $this->categoriesServices = $categoriesServices;
     }

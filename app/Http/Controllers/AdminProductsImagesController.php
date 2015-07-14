@@ -27,7 +27,7 @@ class AdminProductsImagesController extends Controller
      */
     public function  __construct(AdminProductsRepository $productsRepository, AdminProductsImagesRepository $productsImagesRepository, AdminProductsImagesService $productsImagesService)
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
         $this->productsRepository = $productsRepository;
         $this->productImageRepository = $productsImagesRepository;
         $this->productsImagesService = $productsImagesService;

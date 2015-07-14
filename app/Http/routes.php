@@ -25,6 +25,8 @@ Route::group(['prefix' => '/'], function(){
 
     get('/', ['as' => 'index', 'uses' => 'StoreController@index']);
 
+    get('/home', ['as' => 'index_home', 'uses' => 'StoreController@index']);
+
     get('category/{id}', ['as' => 'store_category', 'uses' => 'StoreController@category']);
 
     get('product/{id}', ['as' => 'store_product', 'uses' => 'StoreController@product']);
@@ -51,9 +53,7 @@ Route::group(['prefix' => 'admin'], function(){
 
     Route::pattern('id', '[0-9]+');
 
-    get('/', ['as' => 'admin', function () {
-        return view('welcome');
-    }]);
+    get('/', ['as' => 'admin', 'uses' => 'AdminController@index']);
 
     // CATEGORIAS
     Route::group(['prefix' => 'categories'], function(){
