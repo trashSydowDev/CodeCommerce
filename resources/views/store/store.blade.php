@@ -52,13 +52,13 @@
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="#"><i class="fa fa-user"></i> Minha conta</a></li>
                             <li><a href="http://commerce.dev:10088/checkout"><i class="fa fa-crosshairs"></i>Checkout</a></li>
                             <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-cart"></i>Carrinho</a></li>
                             @if (Auth::guest())
                             <li><a href="{{ url('/auth/login') }}">Login</a></li>
                             <li><a href="{{ url('/auth/register') }}">Registrar</a></li>
                             @else
+                            <li><a href="{{ route('account_orders') }}"><i class="fa fa-user"></i>Minha conta</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">

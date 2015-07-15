@@ -2,6 +2,7 @@
 
 namespace CodeCommerce\Http\Controllers;
 
+use CodeCommerce\Events\CheckoutEvent;
 use CodeCommerce\Order;
 use CodeCommerce\OrderItem;
 use Illuminate\Http\Request;
@@ -13,11 +14,6 @@ use Illuminate\Support\Facades\Session;
 
 class CheckoutController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function place( Order $orderModel, OrderItem $orderItem)
     {
         if (!Session::has('cart')) {
@@ -41,7 +37,12 @@ class CheckoutController extends Controller
                 ]);
             }
 
+//            VER CONFIGURAÇÃO DE EMAIL
+//            dd(Config::get('mail'));
+
             $cart->clear();
+
+            event(new CheckoutEvent(Auth::user(), $order));
 
             return view('store.checkout', compact('order', 'cart'));
         }

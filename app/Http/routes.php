@@ -33,7 +33,13 @@ Route::group(['prefix' => '/'], function(){
 
     get('tag/{id}', ['as' => 'store_tag', 'uses' => 'StoreController@tags']);
 
-    get('checkout/placeOrder', ['as' => 'checkout_place', 'uses' => 'CheckoutController@place']);
+    Route::group(['middleware' => 'auth'], function(){
+
+        get('checkout/placeOrder', ['as' => 'checkout_place', 'uses' => 'CheckoutController@place']);
+
+        get('account/orders', ['as' => 'account_orders', 'uses' => 'AccountController@orders']);
+
+    });
 
     Route::group(['prefix' => 'cart'], function(){
 
