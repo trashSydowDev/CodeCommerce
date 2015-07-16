@@ -17,7 +17,6 @@
     </head>
     <body>
         <main>
-
             <section class="container">
                 <div class="content">
                     <article>
@@ -25,6 +24,7 @@
                         <a href="{{ route('categories') }}" title="Categorias" >Categorias</a> |
                         <a href="{{ route('products') }}" title="Produtos" >Produtos</a> |
                         <a href="{{ route('products_image_index') }}" title="Produtos" >Imagens</a> |
+                        <a href="{{ route('orders') }}" title="Produtos" >Ordens</a> |
                         <a href="{{ url('/auth/logout') }}" title="Deslogar" >Deslogar</a>
                         @yield('content')
                     </article>

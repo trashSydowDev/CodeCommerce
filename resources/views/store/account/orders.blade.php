@@ -1,16 +1,15 @@
-@extends('store.store')
+@extends('store.account.index')
 
-@section('content')
-
-<div class="container">
-    <div class="jumbotron">
-
+    @section('data')
+<div class="col-sm-9">
+    <div class="left-sidebar">
+        <div class="panel-group category-products" id="accordian"><!--category-productsr-->
         <h3>Meus Pedidos</h3>
 
         <table class="table">
             <tbody>
             <tr>
-                <th>#ID</th>
+                <th>ID</th>
                 <th>Itens</th>
                 <th>Valor</th>
                 <th>Status</th>
@@ -32,7 +31,7 @@
                 <td>{{ $order->total }}</td>
                 <td>
                     @if($order->status == 0)
-                        Aguardando pagamento...
+                        Aguardando pagamento
                     @elseif($order->status == 1)
                         Pagamento confirmado
                     @elseif($order->status == 2)
@@ -45,8 +44,7 @@
             @endforeach
             </tbody>
         </table>
-     </div>
-
+        </div>
+    </div>
 </div>
-
-@endsection
+@stop

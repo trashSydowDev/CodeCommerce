@@ -35,9 +35,27 @@ Route::group(['prefix' => '/'], function(){
 
     Route::group(['middleware' => 'auth'], function(){
 
+        // ACCOUNT
+        Route::group(['prefix' => 'account'], function(){
+
+            get('', ['as' => 'account', 'uses' => 'AccountController@index']);
+
+            get('/orders', ['as' => 'account_orders', 'uses' => 'AccountController@orders']);
+
+            get('/address', ['as' => 'account_address', 'uses' => 'AccountController@address']);
+
+            get('/address/new', ['as' => 'account_address_new', 'uses' => 'AccountController@addressnew']);
+
+            get('/address/{id}/edit',['as'=>'account_address_edit','uses'=>'AccountController@edit']);
+
+            put('/address/{id}/update',['as'=>'account_address_update','uses'=>'AccountController@update']);
+
+            post('/register/address', ['as' => 'account_address_register', 'uses' => 'AccountController@registerAddress']);
+
+        });
+
         get('checkout/placeOrder', ['as' => 'checkout_place', 'uses' => 'CheckoutController@place']);
 
-        get('account/orders', ['as' => 'account_orders', 'uses' => 'AccountController@orders']);
 
     });
 
@@ -60,6 +78,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth_admin'], function(){
     Route::pattern('id', '[0-9]+');
 
     get('/', ['as' => 'admin', 'uses' => 'AdminController@index']);
+
+    get('/orders', ['as' => 'orders', 'uses' => 'OrderController@index']);
+
+    get('/orders/{id}', ['as' => 'order_edit', 'uses' => 'OrderController@edit']);
+
+    put('/orders/{id}/update', ['as' => 'order_update', 'uses' => 'OrderController@update']);
 
     // CATEGORIAS
     Route::group(['prefix' => 'categories'], function(){

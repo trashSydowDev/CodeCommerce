@@ -120,3 +120,44 @@ Nessa fase do projeto, você deverá repetir exatamente o que você aprendeu nes
 Também deverá exibir as tags de um determinado produto, no momento da exibição do mesmo na loja.
 Cada tag deverá ter um link que, quando clicado deverá encaminhar o usuário para a página onde temos a listagem
 de todos os produtos associados a tag correspondente.
+
+
+***************************************************************************************
+*************************11º Etapa. Cart
+***************************************************************************************
+
+Nessa fase do projeto, você deverá criar o carrinho de compras como demonstrado, porém, no próprio carrinho,
+você deverá adicionar uma opção para que possamos alterar a quantidade de um determinado produto.
+
+Fique livre para utilizar javascript (ou não), para que possamos realizar uma requisição de atualização no
+carrinho em relação a quantidade de um produto.
+
+
+***************************************************************************************
+*************************12º Etapa. Orders e Auth
+***************************************************************************************
+
+Nessa fase do projeto, você terá de deixar o sistema totalmente preparado para gerar as
+ordens de serviços (Order e OrderItem) apenas para os usuários logados que tenham itens no carrinho de compra.
+
+Quando o usuário clicar em fechar carrinho, a ordem de serviço deve ser gerada automaticamente.
+
+Caso o usuário não esteja logado, redirecione-o para a página de login antes do mesmo finalizar o pedido.
+
+Também você deverá adicionar um novo campo na tabela de usuários chamado: is_admin (boolean).
+
+A partir de agora, apenas usuários logados e com is_admin=1 poderão acessar a área administrativa de nossa loja.
+
+
+***************************************************************************************
+*************************13º Etapa. Checkout
+***************************************************************************************
+
+Agora que você já aprendeu a realizar o processo de checkout, realize as seguintes tarefas:
+
+- No momento do registro de um novo usuário, crie os campos adicionais para que seu endereço completo seja preenchido.
+
+- Na listagem de pedidos contratados pelo usuário, traga o status correto ao invés de trabalharmos com os números inteiros.
+
+- Crie na área administrativa uma página com a listagem de todos os pedidos realizados e a possibilidade de
+editar o status dos mesmos.

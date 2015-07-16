@@ -37,6 +37,12 @@ As descrições do projeto, etapa por etapa, vc encontra no arquivo projeto.txt
 
 >10º Etapa. *Produtos com Tags*
 
+>11º Etapa. *Carrinho de Compra*
+
+>12º Etapa. *Orders e Auth*
+
+>13º Etapa. *Checkout*
+
 **Uso**
 
 > - git clone https://github.com/candidosouza/CodeCommerce.git
@@ -46,6 +52,25 @@ As descrições do projeto, etapa por etapa, vc encontra no arquivo projeto.txt
 > - composer install
 
 > - php artisan serve
+
+
+*Acesso ao sistema*
+
+> Administrador
+
+email: admin@email.com
+
+senha: 123456
+
+> Comprador
+
+email: comprador@email.com
+
+senha: 123456
+
+
+
+
 
 **Sobre o projeto**
 
